@@ -1,7 +1,7 @@
 import { viteBundler } from '@vuepress/bundler-vite'
 import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
-import { sidebar } from './sidebar'
+
 
 export default defineUserConfig({
     base: '/',
@@ -12,7 +12,7 @@ export default defineUserConfig({
     bundler: viteBundler(),
 
     theme: plumeTheme({
-        sidebar,
+        
 
         // 添加您的部署域名
         hostname: 'https://phantombird.netlify.app',
@@ -21,6 +21,7 @@ export default defineUserConfig({
             include: ['blogs/**/*.md'],
             exclude: ['.vuepress/', '**/README.md'],
             pagination: 15,  // 每页显示的文章数量。禁用分页 - pagination: false,
+            tagsTheme: 'gray',
         },
 
         plugins: {

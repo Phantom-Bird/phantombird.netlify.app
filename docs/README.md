@@ -3,11 +3,11 @@ pageLayout: home
 externalLinkIcon: false
 config:
   -
-    type: hero
+    type: banner
     full: true
-    background: tint-plate
+    banner: firefly.jpg
     hero:
-      name: Phantom Bird 的小站
+      name: 'Phantom Bird'
       tagline: 你好！
       text: 一只蓝鸟，精神状态不详。
       actions:
