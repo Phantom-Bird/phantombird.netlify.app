@@ -7,12 +7,13 @@ config:
     full: true
     banner: firefly.jpg
     hero:
-      name: 'Phantom Bird'
+      name: Phantom Bird
       tagline: 你好！
-      text: 一只蓝鸟，精神状态不详。
+      text: ''
       actions:
         -
           theme: brand
           text: 博客
           link: /blog/
 ---
+

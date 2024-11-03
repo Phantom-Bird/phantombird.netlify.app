@@ -7,7 +7,7 @@ export default defineUserConfig({
     base: '/',
     lang: 'zh-CN',
     title: 'Phantom Bird',
-    description: '一只蓝鸟，精神状态不详。',
+    description: '',
 
     bundler: viteBundler(),
 
@@ -21,7 +21,7 @@ export default defineUserConfig({
             include: ['blogs/**/*.md'],
             exclude: ['.vuepress/', '**/README.md'],
             pagination: 15,  // 每页显示的文章数量。禁用分页 - pagination: false,
-            tagsTheme: 'gray',
+            tagsTheme: 'brand',
         },
 
         plugins: {

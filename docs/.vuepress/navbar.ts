@@ -2,9 +2,17 @@ import { defineNavbarConfig } from 'vuepress-theme-plume'
 
 export const navbar = defineNavbarConfig([
     { icon: "carbon:home", text: '首页', link: '/' },
-    { icon: "carbon:blog", text: '博客', link: '/blog/' },
-    { icon: "carbon:tag-group", text: '标签', link: '/blog/tags/' },
-    { icon: "carbon:list", text: '归档', link: '/blog/archives/' },
+
+    { 
+        icon: "carbon:blog",
+        text: '博客',
+        items: [
+            { icon: "carbon:list", text: '列表', link: '/blog/' },
+            { icon: "carbon:time", text: '归档', link: '/blog/archives/' },
+            { icon: "carbon:folder", text: '分类', link: '/blog/categories/' },
+            { icon: "carbon:tag-group", text: '标签', link: '/blog/tags/' },
+        ]
+    },
 
     {
         icon: "carbon:document",
