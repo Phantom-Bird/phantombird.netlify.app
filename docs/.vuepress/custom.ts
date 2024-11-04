@@ -1,21 +1,19 @@
 import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
 
-const rp_tag = '@rp@'
+const rp_tag = '@rp'
 const default_arg = ['', '(', ')'];
 
 function get_args(s: string, i: number){
-    const res = s.split(rp_tag)[i];
-    if (res == undefined) {
+    var li = s.split(rp_tag);
+    
+    if (li[i] == undefined) {
         return default_arg[i];
     } 
-    return res;
+    return li[i];
 }
 
 export const rubyContainer = markdownContainerPlugin({
     type: 'ruby',
-    locales: {
-        '/': {defaultInfo: ''}
-    },
     before: (info: string): string => 
         `<ruby class="container-ruby">\n`,
     after: (info: string): string => 
