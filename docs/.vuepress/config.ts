@@ -1,15 +1,23 @@
 import { viteBundler } from '@vuepress/bundler-vite'
 import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
+import { rubyContainer } from './custom'
 
 
 export default defineUserConfig({
+    head: [
+        ['link', { rel: 'stylesheet', href: '/table.css' }]
+    ],
     base: '/',
     lang: 'zh-CN',
     title: 'Phantom Bird',
     description: '',
 
     bundler: viteBundler(),
+
+    plugins: [
+        rubyContainer
+    ],
 
     theme: plumeTheme({
         
@@ -23,7 +31,8 @@ export default defineUserConfig({
             pagination: 15,  // 每页显示的文章数量。禁用分页 - pagination: false,
             tagsTheme: 'brand',
         },
-
+        
+        
         plugins: {
             /**
              * Shiki 代码高亮
