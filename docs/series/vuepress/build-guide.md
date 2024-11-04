@@ -4,20 +4,27 @@ title: 项目构建指南
 
 ## 安装依赖
 ```sh
-npm install --force
+pnpm i
 ```
 
 ## 预览
 ```sh
-npm run start
+pnpm docs:dev
 ```
 
-## 运行
+## 构建
 ```sh
-npm run build
+pnpm docs:build
+```
+
+## 构建预览
+```sh
+pnpm docs:preview
 ```
 
 ## 修复 Netlify 大小写 bug
-```sh
-copy netlify.toml .vuepress/dist
+netlify.toml:
+```toml
+[build.processing.html]
+  pretty_urls = false
 ```
