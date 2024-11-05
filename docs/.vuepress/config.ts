@@ -8,6 +8,7 @@ export default defineUserConfig({
     head: [
         ['link', { rel: 'stylesheet', href: '/style.css' }]
     ],
+
     base: '/',
     lang: 'zh-CN',
     title: 'Phantom Bird',
