@@ -18,6 +18,10 @@ title: 一些 HTML 用法移植
 写作
 :::
 
+其他 md 元素：
+
+:::ruby lAtEx
+$\LaTeX$
 ::::
 
 :::details 实现
@@ -47,4 +51,3 @@ export const rubyContainer = markdownContainerPlugin({
 })
 ```
 :::
-

@@ -1,5 +1,5 @@
 ---
-title: 数轴与动点知识手册
+title: 数轴与动点知识手册（重制版）
 createTime: 2024/10/20
 categories:
     - study
