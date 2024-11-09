@@ -1,6 +1,6 @@
 import { SidebarMulti, SidebarItem } from "vuepress-theme-plume";
 
-const auto = {items: 'auto'};
+const auto: {items: 'auto'} = {items: 'auto'};
 
 export const sidebar: SidebarMulti = {
     '/series/MC/': auto,
