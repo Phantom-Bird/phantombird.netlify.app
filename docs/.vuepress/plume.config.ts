@@ -8,7 +8,8 @@ import { sidebar } from './sidebar'
 export default defineThemeConfig({
     logo: 'plume.svg',
     // your git repo url
-    docsRepo: '',
+    docsRepo: 'https://gitee.com/phantombird/phantombird-site-src',
+    docsBranch: 'master',
     docsDir: 'docs',
 
     sidebar,
