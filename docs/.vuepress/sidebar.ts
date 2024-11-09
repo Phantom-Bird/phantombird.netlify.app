@@ -9,6 +9,7 @@ export const sidebar: SidebarMulti = {
         'FFMP-20240926',
         'FFMP-20240927',
         'FFMP-20241025',
+        'FFMP-20241108',
     ],
     '/series/vuepress/': [
         'build-guide',
