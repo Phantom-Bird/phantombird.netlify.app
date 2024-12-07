@@ -49,7 +49,7 @@ if (!isok[i][j]){
 
 ### Case 1, 2, 3, 4
 
-![alt text](case1-4.png)
+![无法显示图片](snake-solution/case1-4.png)
 
 ```cpp
 if (plug1<=1 && plug2<=1){
@@ -78,7 +78,7 @@ if (plug1<=1 && plug2<=1){
 
 ### Case 5, 6, 7, 8, 9
 
-![alt text](snake-solution/image/case5-9.png)
+![无法显示图片](snake-solution/case5-9.png)
 
 ```cpp
 if (plug2>=2 && plug1<=1){
@@ -109,7 +109,7 @@ if (plug2>=2 && plug1<=1){
 
 ### Case 10, 11, 12, 13, 14
 
-![无法显示图片](https://cdn.luogu.com.cn/upload/image_hosting/2xuckx0x.png)
+![无法显示图片](snake-solution/case10-14.png)
 
 ```cpp
 if (plug1>=2 && plug2<=1){
@@ -144,7 +144,7 @@ if (plug1>=2 && plug2<=1){
 
 ### Case 15
 
-![无法显示图片](https://cdn.luogu.com.cn/upload/image_hosting/8oyug4xf.png)
+![无法显示图片](snake-solution/case15.png)
 
 ```cpp
 if (plug1==2 && plug2==2){
@@ -156,7 +156,7 @@ if (plug1==2 && plug2==2){
 
 ### Case 16, 17
 
-![无法显示图片](https://cdn.luogu.com.cn/upload/image_hosting/9fosw54b.png)
+![无法显示图片](snake-solution/case16-17.png)
 
 ```cpp
 if (plug1==2 && plug2==3){
@@ -175,7 +175,7 @@ if (plug1==2 && plug2==3){
 
 ### Case 18, 19
 
-![无法显示图片](https://cdn.luogu.com.cn/upload/image_hosting/hi9fovfg.png)
+![无法显示图片](snake-solution/case18-19.png)
 
 ```cpp
 if (plug1==3 && plug2==2){
@@ -195,7 +195,7 @@ if (plug1==3 && plug2==2){
 
 ### Case 20
 
-![无法显示图片](https://cdn.luogu.com.cn/upload/image_hosting/nctsyvm3.png)
+![无法显示图片](snake-solution/case20.png)
 
 ```cpp
 if (plug1==4 && plug2==3){
@@ -209,7 +209,7 @@ if (plug1==4 && plug2==3){
 
 ### Case 21
 
-![无法显示图片](https://cdn.luogu.com.cn/upload/image_hosting/i4nm6qym.png)
+![无法显示图片](snake-solution/case21.png)
 
 ```cpp
 if (plug1==4 && plug2==3){
@@ -223,7 +223,7 @@ if (plug1==4 && plug2==3){
 
 ### Case 22
 
-![无法显示图片](https://cdn.luogu.com.cn/upload/image_hosting/z0masewz.png)
+![无法显示图片](snake-solution/case22.png)
 
 ```cpp
 if (plug1==4 && plug2==4){
@@ -238,7 +238,7 @@ if (plug1==4 && plug2==4){
 
 ### Case 23
 
-![无法显示图片](https://cdn.luogu.com.cn/upload/image_hosting/7hqjdlh8.png)
+![无法显示图片](snake-solution/case23.png)
 
 ```cpp
 if (plug1==3 && plug2==4){
