@@ -19,6 +19,8 @@ tags:
 
 于是等同于插头 DP。如果你不知道这是什么，请先做[模板题](https://www.luogu.com.cn/problem/P5056)。
 
+在插头 DP 的过程中，当我们检测到成环的时候，将变量 `can_clear` 设置为 $1$，然后把答案加上 `can_clear` 即可。
+
 ## 插头设计
 
 $0$ - 无插头且相邻格子不为端点；  
@@ -33,6 +35,10 @@ $3, 4$ - 不与端点相连的左、右括号插头。
 ## 状态转移
 
 一共有 $24$ 种转移方式。
+
+> 如果遇到不认识的变量名：  
+> `plug1` 与 `plug2` 代表左、上的插头；`stateclr` 代表去除以上两个插头后的状态。  
+> 我们使用[插头 DP 工具集](plug-dp-toolset)处理转移，用到的陌生的函数都在这里。
 
 ### Case 0
 
@@ -250,9 +256,9 @@ if (plug1==3 && plug2==4){
 }
 ```
 
-### Code
+## std
 
-:::details
+:::details Code
 
 ```cpp
 #include <bits/stdc++.h>
@@ -576,4 +582,5 @@ signed main(){
     return 0;
 }
 ```
+
 :::
