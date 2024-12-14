@@ -25,10 +25,10 @@ AC [CF1368C Even Picture（加强加强加强加强版）](https://www.luogu.com
 ### 推算
 
 设每块大小为 $s \times s$，由小学奥数可得
-$$S_{总}=4s^2+2s+2$$
-$$S_{冗余}=8s$$
-$$S_{有效}=4s^2-6s+2$$
-由于 $S_{有效} \le n$，根据求根公式，令
+$$S_\text{总}=4s^2+2s+2$$
+$$S_\text{冗余}=8s$$
+$$S_\text{有效}=4s^2-6s+2$$
+由于 $S_\text{有效} \le n$，根据求根公式，令
 $$s=\left\lfloor \frac{6+\sqrt{16n+4}}{8} \right\rfloor$$
 假如 $n-S_{有效}$ 的剩余部分用形如
 ```
