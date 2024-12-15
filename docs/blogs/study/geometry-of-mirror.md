@@ -31,7 +31,7 @@ $\begin{cases} SP=S'P \\ \angle SPM=\angle S'PM \\ PM=PM\end{cases}$
 $\triangle SPM≌\triangle S'PM(SAS)$  
 $\therefore SM=S'M, \angle SMP=\angle S'MP$  
 
-$\text{又}\because M\text{在}SS'上$  
+$\text{又}\because M\text{在}SS'\text{上}$  
 $\therefore \angle SMP+\angle S'MP=180\degree$  
 $\therefore \angle SMP=\angle S'MP=180\degree \div 2=90\degree$  
 $\therefore AB \perp SS'$  
