@@ -30,7 +30,7 @@ $$S_\text{冗余}=8s$$
 $$S_\text{有效}=4s^2-6s+2$$
 由于 $S_\text{有效} \le n$，根据求根公式，令
 $$s=\left\lfloor \frac{6+\sqrt{16n+4}}{8} \right\rfloor$$
-假如 $n-S_{有效}$ 的剩余部分用形如
+假如 $n-S_\text{有效}$ 的剩余部分用形如
 ```
 ##
 ###
@@ -39,7 +39,7 @@ $$s=\left\lfloor \frac{6+\sqrt{16n+4}}{8} \right\rfloor$$
    ##
 ```
 的尾巴接在原图形上面，则有
-$$k=S_{总}+3(n-S_{有效})$$
+$$k=S_\text{总}+3(n-S_\text{有效})$$
 稍加计算可得
 $$n+4\sqrt{n} \le k \le n+12\sqrt{n}$$
 对于 $n \le 500$ 有 $k \le 748.$
