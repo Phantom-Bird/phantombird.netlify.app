@@ -95,7 +95,7 @@ $$ans=c+\sum_{i=1}^c a_i$$
 
 求助~~猪猪侠~~Geogebra发现对于函数
 $$f(x)=\sqrt[x]{k}+x$$
-$\forall 1\le k\le10^{18}，1\le x_{\min y}\le30$
+$\forall 1\le k\le10^{18},1\le x_{\min y}\le30$
 
 枚举 $1 \le c \le 30$，像T1一样解即可。TLE掉一个点。
 
