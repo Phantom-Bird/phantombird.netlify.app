@@ -1,6 +1,7 @@
 import { defineThemeConfig } from 'vuepress-theme-plume'
 import { navbar } from './navbar'
 import { sidebar } from './sidebar'
+import { notes } from './notes' 
 
 /**
  * @see https://theme-plume.vuejs.press/config/basic/
@@ -12,7 +13,8 @@ export default defineThemeConfig({
     docsBranch: 'master',
     docsDir: 'docs',
 
-    sidebar,
+    sidebar, 
+    // notes, 
 
     appearance: true,
 
