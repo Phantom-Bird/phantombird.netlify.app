@@ -59,7 +59,7 @@ $$
 画出 $a\text{-}m$ 图象如下（阴影部分为满足不等式的部分）：
 
 :::details 图象
-![图1](abs-max-transformation/image.png)
+![图1](abs-max-decomposition/image.png)
 :::
 
 由于任意 $m>0$ 都要满足不等式，即一整条线 $a=a_0(m>0)$都要在区域之内。
@@ -67,7 +67,7 @@ $$
 于是符合要求的区域如下图红色部分：
 
 :::details 图象
-![图2](abs-max-transformation/image-1.png)
+![图2](abs-max-decomposition/image-1.png)
 :::
 
 即 $a\le-\dfrac{9}{4}$ 或 $a\ge\dfrac{5}{2}$.
