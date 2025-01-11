@@ -27,19 +27,18 @@ tags:
 
 $$
 \begin{align*}
-m^2 + |m-a|
-&= m^2+\max\{m-a,a-m\} \\
-&= \max\{m^2+m-a, m^2+a-m\} \ge \frac{9}{4},
+    &\begin{align*}
+    m^2 + |m-a|
+    &= m^2+\max\{m-a,a-m\} \\
+    &= \max\{m^2+m-a, m^2+a-m\} \ge \frac{9}{4},
+    \end{align*}
+\\
+\iff& m^2+m-a \ge \frac{9}{4} \text{ 或 } m^2+a-m \ge \frac{9}{4}, \\
+\iff& a \ge -m^2+m+\dfrac{9}{4} \text{ 或 } a\le m^2+m-\dfrac{9}{4}.
 \end{align*}
 $$
 
-由 $\max\{A,B\} \ge C \iff A\ge C$ 或 $B\ge C$，
-
-$$\iff m^2+m-a \ge \frac{9}{4} \text{ 或 } m^2+a-m \ge \frac{9}{4}.$$
-
-整理得 $a \ge -m^2+m+\dfrac{9}{4}$ 或 $a\le m^2+m-\dfrac{9}{4}$.
-
-画出图象如下（阴影部分为满足不等式的部分）：
+画出 $a\text{-}m$ 图象如下（阴影部分为满足不等式的部分）：
 
 :::details 图象
 ![图1](abs-max-transformation/image.png)
