@@ -1,5 +1,5 @@
 ---
-title: 用复数运算表示向量运算
+title: 用复数运算表示向量运算的尝试
 createTime: 2025/3/21
 categories: 
     - study
@@ -47,6 +47,8 @@ $$\mathbf{z_1}\times\mathbf{z_2} = \frac{z_1z_2^* - z_1^*z_2}{2} = \mathbf{Im}(z
 ## 线性变换
 
 可以由点积表示。
+
+$$\left[ \begin{matrix}\mathbf{a}\\\mathbf{b}\end{matrix} \right] ~ \mathbf{c} = \left[ \begin{matrix}\mathbf{a}\cdot\mathbf{c} \\ \mathbf{b}\cdot\mathbf{c}\end{matrix} \right]$$
 
 ## 分解 II
 
