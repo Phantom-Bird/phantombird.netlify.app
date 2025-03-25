@@ -44,7 +44,7 @@ f''(k) &= 2\left(\frac{1}{k}+\ln\left(1-\frac{1}{k}\right)\right) < 0 \\
 \text{由 } f(3) &= 6\ln3-9\ln3+2\ln4+\frac{1}{2} \\
 &= \frac{1}{2}\ln\left(\frac{2^{8}e}{3^{6}}\right) \\
 \text{显然 } & \frac{3^6}{2^8} > 2.8 > e, \text{于是 } f(3)<0. \\
-\therefore n \ge 3 & \text{ 时}，f(k) < 0.
+\therefore n \ge 3 & \text{ 时，} f(k) < 0.
 \end{aligned}
 $$
 

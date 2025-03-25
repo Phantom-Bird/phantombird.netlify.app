@@ -12,6 +12,7 @@ export const sidebar: SidebarMulti = {
     '/series/vuepress/': [
         'build-guide',
         'markdown-guide',
-        'useful-html'
+        'useful-html',
+        'LaTeX-affects'
     ],
 }
