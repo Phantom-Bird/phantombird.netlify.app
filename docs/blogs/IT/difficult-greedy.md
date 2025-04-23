@@ -274,11 +274,11 @@ $$
 
 容易发现它涵盖了所有的差异不大于 $3$ 的情况。
 
-设 $OPT_k$ 为 $k$ 时的最优解，即证 $\exists OPT_{k-1}, OPT_k$ 使得 $OPT_k \Delta OPT_{k-1} \le 3$。
+设 $\mathrm{OPT}_k$ 为 $k$ 时的最优解，即证 $\exists \mathrm{OPT}_{k-1}, \mathrm{OPT}_k$ 使得 $\mathrm{OPT}_k \Delta \mathrm{OPT}_{k-1} \le 3$。
 
-考虑反证法。设 $\min| OPT_{k-1}\Delta OPT_k | = m \ge 4$。
+考虑反证法。设 $\min| \mathrm{OPT}_{k-1}\Delta \mathrm{OPT}_k | = m \ge 4$。（注：$\Delta$ 表示对称差）
 
-设 $G = OPT_k \setminus OPT_{k-1}$, $$O = OPT_{k-1} \setminus OPT_k$$
+设 $G = \mathrm{OPT}_k \setminus \mathrm{OPT}_{k-1}, O = \mathrm{OPT}_{k-1} \setminus \mathrm{OPT}_k$
 
 由于 $|G|-|O|=1, |G|+|O| \ge 4$，$|G|, |O| \ge 2$。
 
