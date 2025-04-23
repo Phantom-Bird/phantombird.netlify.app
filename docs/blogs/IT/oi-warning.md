@@ -103,4 +103,68 @@ test_data.input_writeln(n, m)
 
 让我们恭喜[摸个鱼鱼](https://www.luogu.com.cn/problem/U514748)拿下双杀。
 
+## n 有双重人格
+
+```cpp
+int n;
+...
+int main(){
+  int n;
+  cin >> n;
+}
+```
+
+## 双重循环
+
+```cpp
+inline void init_st(){
+    for (int i=1; i<=n; i++){
+        for (int j=1; i+(1<<j)-1<=n; j++){
+            st[i][j] = gcd(st[i][j-1], st[i+(1<<(j-1))][j-1]);
+        }
+    }
+}
+```
+
+ST 表/区间 DP 笑传之初创备。
+
+## 左右不分
+
+```cpp
+int len = l - r + 1;
+```
+
+我已无法理解此人。
+
+## 自动取整
+
+```cpp
+int dis = sqrt(x*x + y*y);
+```
+
+我将无情地割舍一切（丢掉小数部分）
+
+## 广义滑动窗口
+
+```cpp
+for (int i=1; i<=i+n; i++)
+```
+
+小明永远地追逐着小红，
+小红只是$\mathop\textsf{回以}\limits^\text{return}3221225477$.
+
+## 变量名灾难
+
+```cpp
+int maxa = -1, maxi=-1;
+for (int i=1; i<=n; i++){
+    if (ans[i] > maxi){
+        maxa = ans[i];
+        maxi = i;
+    }
+}
+```
+
+~~居然能拿 20 分，这数据也是没谁了。~~
+
 ## 未完待续
