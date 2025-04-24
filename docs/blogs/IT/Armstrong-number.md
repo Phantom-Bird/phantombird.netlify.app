@@ -19,15 +19,15 @@ $f = 2.6 \mathrm{Hz}$ 下，
 
 `unsigned long long` 版本（$T=30$）：
 
-![加载不出来 QwQ](Armstrong-number/ull.jpg)
+![加载不出来 QwQ](Armstrong-number/ull.png)
 
 `unsigned __int128` 版本（$T=3$）：
 
-![加载不出来 QwQ](Armstrong-number/u128.JPG)
+![加载不出来 QwQ](Armstrong-number/u128.png)
 
 对数坐标对比：
 
-![加载不出来 QwQ](Armstrong-number/comparison.jpg)
+![加载不出来 QwQ](Armstrong-number/comparison.png)
 
 ## 代码
 
