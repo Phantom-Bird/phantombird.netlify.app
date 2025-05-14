@@ -26,7 +26,7 @@ export const navbar = defineNavbarConfig([
         icon: "carbon:document-blank",
         text: "FFPS",
         items: [
-            { icon: "carbon:function-math", text: "FFMP", link: "/series/FFMP/FFMP-20240926" },
+            { icon: "carbon:function-math", text: "FFMP", link: "/series/FFMP/1. intro" },
         ],
     }
     
