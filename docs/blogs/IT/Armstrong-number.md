@@ -15,7 +15,7 @@ categories:
 
 ## 运行时间
 
-$f = 2.6 \mathrm{Hz}$ 下，
+$f = 2.6 \mathrm{GHz}$ 下，
 
 `unsigned long long` 版本（$T=30$）：
 
