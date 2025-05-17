@@ -17,17 +17,17 @@
     "vp-update": "pnpm dlx vp-update"
   },
   "devDependencies": {
-    "@vuepress/bundler-vite": "2.0.0-rc.18",
+    "@vuepress/bundler-vite": "2.0.0-rc.23",
     "http-server": "^14.1.1",
-    "sass-embedded": "^1.87.0",
+    "sass-embedded": "^1.89.0",
     "typescript": "^5.8.3",
-    "vue": "^3.5.13",
-    "vuepress": "2.0.0-rc.18",
-    "vuepress-theme-plume": "1.0.0-rc.114"
+    "vue": "^3.5.14",
+    "vuepress": "2.0.0-rc.23",
+    "vuepress-theme-plume": "1.0.0-rc.149"
   },
   "dependencies": {
-    "@vuepress/plugin-markdown-container": "2.0.0-rc.30",
-    "@vuepress/plugin-register-components": "2.0.0-rc.54",
+    "@vuepress/plugin-markdown-container": "2.0.0-rc.103",
+    "@vuepress/plugin-register-components": "2.0.0-rc.103",
     "netlify": "^13.3.5"
   }
 }

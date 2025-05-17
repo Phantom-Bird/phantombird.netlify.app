@@ -3,11 +3,14 @@ title: 一些 HTML 用法移植
 ---
 
 ## 写作……读作……
-:::md-demo HTML
+:::demo markdown
+```md
 <ruby>写作<rp>（</rp><rt>读作</rt><rp>）</rp></ruby>
+```
 :::
 
-::::md-demo Markown
+::::demo markdown
+```md
 :::ruby 读作
 写作
 :::
@@ -16,6 +19,7 @@ title: 一些 HTML 用法移植
 
 :::ruby 读作 @rp ( @rp )
 写作
+```
 :::
 
 其他 md 元素：

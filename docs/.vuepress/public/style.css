@@ -5,3 +5,11 @@
 .inline {
     display: inline;
 }
+
+.vp-link .vp-icon {
+    display: inline-block !important;
+}
+
+.vp-nav-screen-menu-group .button .button-text .vp-icon {
+    display: inline-block !important;
+}

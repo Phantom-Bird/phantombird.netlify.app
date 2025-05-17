@@ -33,6 +33,10 @@ export default defineUserConfig({
             tagsTheme: 'brand',
         },
         
+        markdown: {
+            demo: true,
+            codeTree: true
+        },
         
         plugins: {
             /**
@@ -49,14 +53,14 @@ export default defineUserConfig({
              * markdown enhance
              * @see https://theme-plume.vuejs.press/config/plugins/markdown-enhance/
              */
-            markdownEnhance: {
-                demo: true,
+            // markdownEnhance: {
+            //     demo: true,
             //   include: true,
             //   chart: true,
             //   echarts: true,
             //   mermaid: true,
             //   flowchart: true,
-            },
+            // },
 
             /**
              *  markdown power
