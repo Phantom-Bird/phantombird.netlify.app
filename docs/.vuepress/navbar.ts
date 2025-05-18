@@ -26,7 +26,7 @@ export const navbar = defineNavbarConfig([
         icon: "carbon:document-blank",
         text: "题集",
         items: [
-            { icon: "carbon:function-math", text: "FFMP", link: "/series/FFMP/1. intro" },
+            { icon: "carbon:function-math", text: "FFMP", link: "/series/FFMP/An-intro" },
         ],
     }
     
