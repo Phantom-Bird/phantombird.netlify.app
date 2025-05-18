@@ -10,6 +10,30 @@
     display: inline-block !important;
 }
 
+/*修复图标换行 bug*/
+
 .vp-nav-screen-menu-group .button .button-text .vp-icon {
     display: inline-block !important;
 }
+
+/*微调导航栏图标*/
+
+.vp-menu-link .vp-link .vp-icon {
+    position: relative;
+    top: 2px;
+}
+
+.vp-nav-screen-menu .vp-link .vp-icon {
+    position: relative;
+    top: 2px;
+}
+
+.navbar-menu-link .vp-icon {
+    position: relative;
+    top: 0.8px;
+}
+
+/*修复外链 bug*/
+/* span.vpi-external-link[data-v-ff82a999=""] {
+    display: none;
+} */
