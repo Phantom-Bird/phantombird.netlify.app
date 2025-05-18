@@ -94,7 +94,18 @@ for (int i=1; i<=n; i++){
 
 ## 有些话明明想好了却无法说出口
 
-有些$\mathop{\textsf{话}}\limits^{\textsf{变量}}$明明$\mathop{\textsf{想}}\limits^{\textsf{生成}}$好了却无法$\mathop{\textsf{说出口}}\limits^{\textsf{输出}}$ 
+有些 {.inline}
+:::ruby 变量
+话
+:::
+明明 {.inline}
+:::ruby 生成
+想
+:::
+好了却无法 {.inline}
+:::ruby 输出
+说出口
+:::
 
 ```python
 k = strong_rand(K, 1) if K>2 else K
@@ -151,7 +162,11 @@ for (int i=1; i<=i+n; i++)
 ```
 
 小明永远地追逐着小红，
-小红只是$\mathop\textsf{回以}\limits^\text{return}3221225477$.
+小红只是 {.inline}
+:::ruby return
+回以
+:::
+$\color{red} 3221225477$. {.inline}
 
 ## 变量名灾难
 

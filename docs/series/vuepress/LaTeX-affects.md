@@ -3,17 +3,23 @@ title: LaTeX 效果
 createTime: 2025/1/24
 ---
 
+## 效果
+
 原整理于洛谷，2025/3/25 移植。
 
 $$
-{\color{#CF6}\Huge\bigcirc}\kern{-33px}
+\begin{gather*}
+{\color{#CF6}\Huge\bigcirc}\kern{-50px}
 \color{#9D3}
-\stackrel{\tiny\text{Adventure Rank}}{\Large 65}\\
+\stackrel{\tiny\text{Adventure Rank}}{\Large 65}
+\\
 \stackrel{\scriptsize\tt 295229520 \mathop{/} 332133210}
 {\scriptsize\color{#888}\diamond\ \ 
 \color{#CF6}\rule{80px}{3px}\color{#CCC}\rule{10px}{3px}\ 
-\color{#888}\diamond}\\
+\color{#888}\diamond}
+\\
 \small\tt\color{#999}Adventure\ EXP+\!998244353
+\end{gather*}
 $$
 
 $$
@@ -40,23 +46,27 @@ $$
 \end{array}
 $$
 
+:::tip
+在 KaTeX 中，`\kern` 的参数为 `33px`.
+:::
+
 $$
 \begin{array}{l|l}
 \hline
-\setminus\texttt{kern\{2em\}} & 1\kern{2em}2
+\texttt{\\kern\{2em\}} & 1\kern{2em}2
 \\\hline
-\setminus\texttt{kern\{-10px\}} & 1\kern{-10px}2
+\texttt{\\kern\{-10px\}} & 1\kern{-10px}2
 \\\hline
-\setminus\texttt{hphantom\{666\}} & {1\hphantom{666}2 ~\cdots~ 16662}
+\texttt{\\hphantom\{666\}} & \substack{\Large 1\hphantom{666}2 \\ \Large 16662}
 \\\hline
 \end{array}
 $$
 
 $$
 \begin{array}{l|c}
-\setminus\texttt{\\stackrel\{1\}\{2\}} & \stackrel{1}{2}
+\texttt{\\stackrel\{1\}\{2\}} & \stackrel{1}{2}
 \\\hline
-\setminus\texttt{stackrel\{}{\setminus}\texttt{large\{1\}\}\{2\}} & \stackrel{\large{1}}{2}
+\texttt{\\stackrel\{\\large\{1\}\}\{2\}} & \stackrel{\large{1}}{2}
 \end{array}
 $$
 
@@ -67,3 +77,41 @@ display style: $\displaystyle \sum_i\frac{1}{2}$
 `\dfrac`: $\dfrac{1}{2}$
 
 *行内使用 display style 如果不新建段落的话可能会和相邻行重叠
+
+## 宏包
+
+!!我大费周章把 KaTeX 换成 MathJax 就是为了这个!!
+
+### 各种箭头
+
+:::demo markdown
+```md
+$$
+\begin{gather*}
+\texttt{amsmath} & \xrightarrow[below]{above} \quad
+\xlongequal{text} \quad
+\xtwoheadrightarrow{text}
+\\
+\texttt{extpfeil} & \xrightleftharpoons[below]{above}
+\end{gather*}
+$$
+```
+:::
+
+### 化学方程式
+
+:::demo markdown
+```md
+$$
+\begin{gather*}
+\ce{Cu + SO4^2-(浓) + 4H+ ->[\Delta] Cu^2+ + SO2 ^ + 2H2O}
+\\
+\ce{C2H5OH + CH3COOH <=>[浓H2SO4][\Delta] CH3COOC2H5 + H2O}
+\\
+\ce{<=>>} \quad \ce{<<=>}
+\\
+\ce{CuSO4*5H2O}
+\end{gather*}
+$$
+```
+:::

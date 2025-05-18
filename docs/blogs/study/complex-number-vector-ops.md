@@ -26,10 +26,9 @@ $$
 (z_1+z_2)(z_1^*+z_2^*) &= (\mathbf{z_1}+\mathbf{z_2})^2
 \\
 z_1z_1^*+z_2z_2^*+z_1z_2^*+z_1^*z_2 &= \mathbf{z_1}^2+\mathbf{z_2}^2+2\mathbf{z_1}\cdot\mathbf{z_2}
-\end{aligned}
-
 \\
-\mathbf{z_1}\cdot\mathbf{z_2} = \frac{z_1z_2^*+z_1^*z_2}{2}
+\mathbf{z_1}\cdot\mathbf{z_2} &= \frac{z_1z_2^*+z_1^*z_2}{2}
+\end{aligned}
 $$
 
 当然也有 $\mathbf{z_1}\cdot\mathbf{z_2} = \mathbf{Re}(z_1^*z_2) = \mathbf{Re}(z_2^*z_1)$.
@@ -99,8 +98,8 @@ a*(b*c) = (a^* *b) * c &~~~~\text{（左乘左外共轭律）}\\
 a(b*c) = b*(ac)=(a*b)*c &~~~~\text{（左乘右外互通律/跨运算结合律）}\\
 a(b*c) = (a^* b) * c &~~~~\text{（左乘左外共轭律）}\\
 (ab)*c = b*(a^*c) &~~~~\text{（左乘左右共轭律/跨运算结合律）}\\
-(a \plusmn b)*c = a*c \plusmn b*c &~~~~\text{（右分配律）}\\
-a*(b \plusmn c) = a*b \plusmn a*c &~~~~\text{（左分配律）}\\
+(a \pm b)*c = a*c \pm b*c &~~~~\text{（右分配律）}\\
+a*(b \pm c) = a*b \pm a*c &~~~~\text{（左分配律）}\\
 a^{-1} = \frac{1}{a^*} &~~~~\text{（单位圆反演逆元）}\\
 aa^{-1}=a^{-1}a=1 &~~~~\text{（左右逆元相等）}\\
 \begin{aligned}

@@ -37,3 +37,12 @@
 /* span.vpi-external-link[data-v-ff82a999=""] {
     display: none;
 } */
+
+/*KaTeX 风格的细滚动条*/
+.MathJax {
+    overflow: auto hidden;
+    padding-top: .2em;
+    padding-bottom: .4em;  /*KaTeX 默认的 .2em 在这里不够*/
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}

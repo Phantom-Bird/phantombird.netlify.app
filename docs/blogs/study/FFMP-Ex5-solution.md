@@ -27,8 +27,10 @@ $$
 接下来来一把对数+差分宇宙：
 
 $$
+\begin{gather*} 
 \ln p - \left(1-\frac{n}{2}\right) \le \left(\sum_{k=1}^n 2k\ln k \right) - n^2\ln n - \left(1-\frac{n}{2}\right) = s_n\\
 s_k - s_{k-1} = 2k\ln k - k^2\ln k + (k-1)^2\ln (k-1) + \frac{1}{2}
+ \end{gather*}
 $$
 
 ---
@@ -51,8 +53,10 @@ $$
 ---
 
 $$
+\begin{gather*} 
 \text{根据 } \frac{1^1}{1^{1^2}}=1<e^{3/2}, \frac{1^1 \times 2^2}{2^{2^2}}=\frac{1}{2} < e, \\
 n=1, n=2 \text{ 符合条件.}
 \\
 \text{由 } s_k - s_{k-1} < 0, \text{以数学归纳法即证。} \square
+ \end{gather*}
 $$

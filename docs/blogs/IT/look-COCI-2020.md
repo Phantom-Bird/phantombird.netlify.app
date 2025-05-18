@@ -100,5 +100,5 @@ categories:
 然后是简单的 DP.  
 设前 $i$ 个相似类已经处理好，并且恰有 $j$ 对单词相似的方案数为 $f(i,j)$  
 于是 $f(i,j) = \displaystyle\sum_{1\le r\le j, a_i/2} f(i-1,j-r) + \binom{a_i}{2r}$  
-时间复杂度 $O(cak)=O(nk)$（c为相似类个数）  
+时间复杂度 $O(cak)=O(nk)$（$c$ 为相似类个数）  
 使用滚动数组，空间 $O(ak)$

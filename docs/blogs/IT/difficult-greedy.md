@@ -242,8 +242,10 @@ int main(){
 证明：设两列分别为
 
 $$
+\begin{gather*}
 a\quad b\\
 c\quad d
+\end{gather*}
 $$
 
 不妨设 $a\le b$，于是 $a\le b<d$。
@@ -285,18 +287,24 @@ $$
 分类讨论：
 
 1. 若 $G, O$ 都存在同列的数
-   $$G_1 \quad O_1 \\ G_2 \quad O_2$$
+   $$\begin{gather*} 
+   G_1 \quad O_1 \\ G_2 \quad O_2 
+   \end{gather*}$$
    由最优性可知 $G_1+G_2 \ge O_1+O_2$ 且 $G_1+G_2 \le O_1+O_2$，  
    于是 $G_1+G_2 = O_1+O_2$。  
    此时可以让 $O_1, O_2$ 改选 $G_1, G_2$ 缩小 $m$ 值，与 $m$ 最小矛盾。
 2. 若 $G$ 存在同列的数，$O$ 不存在同列的数
-   $$G_1 \quad O_1 \quad O_2\\
-   G_2 \quad X_1 \quad X_2$$
+   $$\begin{gather*} 
+   G_1 \quad O_1 \quad O_2\\
+   G_2 \quad X_1 \quad X_2 
+   \end{gather*}$$
    （$X$ 表示都不选）  
    此时 $G_1+G_2 = O_1+O_2$，由 1 同理。  
    再如
-   $$G_1 \quad B_1 \quad O_2\\
-   G_2 \quad O_1 \quad X_1$$
+   $$\begin{gather*} 
+   G_1 \quad B_1 \quad O_2\\
+   G_2 \quad O_1 \quad X_1 
+   \end{gather*}$$
    （$B$ 表示都选了）
    也是同理的。
 

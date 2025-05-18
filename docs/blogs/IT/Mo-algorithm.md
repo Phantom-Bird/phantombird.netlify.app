@@ -5,7 +5,7 @@ createTime: 2024/12/15
 
 ## 普通莫队
 
-对于有些区间问题，数据结构难以维护，但是若已知 $\operatorname{ans}(l, r)$，可以很快地求出 $\operatorname{ans}(l \plusmn1, r)$ 与 $\operatorname{ans}(l, r \plusmn1)$，即可以很快地在询问区间中增删一个数，我们容易想到求出 $\operatorname{ans}(l_i, r_i)$ 之后，通过一步一步挪动 $l, r$ 得到 $\operatorname{ans}(l_{i+1}, r_{i+1})$。
+对于有些区间问题，数据结构难以维护，但是若已知 $\operatorname{ans}(l, r)$，可以很快地求出 $\operatorname{ans}(l \pm1, r)$ 与 $\operatorname{ans}(l, r \pm1)$，即可以很快地在询问区间中增删一个数，我们容易想到求出 $\operatorname{ans}(l_i, r_i)$ 之后，通过一步一步挪动 $l, r$ 得到 $\operatorname{ans}(l_{i+1}, r_{i+1})$。
 
 为了使挪动次数尽可能小，莫队提出：设块长为 $B$，$\operatorname{block}(x)=\left\lfloor \frac{x}{B} \right\rfloor$，可以对询问以 $[\operatorname{block}(l), r]$ 为关键字排序。$B=\frac{n}{\sqrt{m}}$ 时，有最小复杂度 $\operatorname{O}(n\sqrt{m})$。
 

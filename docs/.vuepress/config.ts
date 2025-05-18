@@ -2,7 +2,8 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
 import { rubyContainer } from './custom'
-
+import {MarkdownItMathjaxOptions} from '@mdit/plugin-mathjax-slim'
+import {markdownMathPlugin} from '@vuepress/plugin-markdown-math'
 
 export default defineUserConfig({
     head: [
@@ -17,7 +18,22 @@ export default defineUserConfig({
     bundler: viteBundler(),
 
     plugins: [
-        rubyContainer
+        rubyContainer,
+        markdownMathPlugin({
+            type: 'mathjax',
+            tex: {
+                packages: [
+                    'base', 'action', 'ams', 'amscd', 'bbox', 
+                    'boldsymbol', 'braket', 'bussproofs', 
+                    'cancel', 'cases', 'centernot', 'color', 
+                    'colortbl', 'empheq', 'enclose', 'extpfeil', 
+                    'gensymb', 'html', 'mathtools', 'mhchem', 
+                    'newcommand', 'noerrors', 'noundefined', 
+                    'upgreek', 'unicode', 'verb', 'configmacros', 
+                    'tagformat', 'textcomp', 'textmacros', 
+                ]
+            }
+        })
     ],
 
     theme: plumeTheme({
@@ -35,9 +51,12 @@ export default defineUserConfig({
         
         markdown: {
             demo: true,
-            codeTree: true
+            codeTree: true,
+            math: {
+                type: 'mathjax',
+            }
         },
-        
+
         plugins: {
             /**
              * Shiki 代码高亮

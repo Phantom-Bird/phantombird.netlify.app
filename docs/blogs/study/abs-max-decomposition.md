@@ -45,11 +45,11 @@ $=\max\{2(x-1)^2, 2mx-2\}$
 
 $$
 \begin{align*}
-    &\begin{align*}
+    &\begin{aligned}
     m^2 + |m-a|
     &= m^2+\max\{m-a,a-m\} \\
     &= \max\{m^2+m-a, m^2+a-m\} \ge \frac{9}{4},
-    \end{align*}
+    \end{aligned}
 \\
 \iff& m^2+m-a \ge \frac{9}{4} \text{ 或 } m^2+a-m \ge \frac{9}{4}, \\
 \iff& a \ge -m^2+m+\dfrac{9}{4} \text{ 或 } a\le m^2+m-\dfrac{9}{4}.
