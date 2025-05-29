@@ -22,6 +22,10 @@ $$
 \end{gather*}
 $$
 
+:::tip
+在 KaTeX 中，`\kern` 的参数为 `33px`.
+:::
+
 $$
 \begin{array}{c|c}
 \hline
@@ -45,10 +49,6 @@ $$
 
 \end{array}
 $$
-
-:::tip
-在 KaTeX 中，`\kern` 的参数为 `33px`.
-:::
 
 $$
 \begin{array}{l|l}
@@ -80,7 +80,7 @@ display style: $\displaystyle \sum_i\frac{1}{2}$
 
 ## 宏包
 
-!!我大费周章把 KaTeX 换成 MathJax 就是为了这个!!
+!!我大费周章把 KaTeX 换成 MathJax 就是为了这个口牙！!!
 
 ### 各种箭头
 

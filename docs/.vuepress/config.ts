@@ -21,18 +21,8 @@ export default defineUserConfig({
         rubyContainer,
         markdownMathPlugin({
             type: 'mathjax',
-            tex: {
-                packages: [
-                    'base', 'action', 'ams', 'amscd', 'bbox', 
-                    'boldsymbol', 'braket', 'bussproofs', 
-                    'cancel', 'cases', 'centernot', 'color', 
-                    'colortbl', 'empheq', 'enclose', 'extpfeil', 
-                    'gensymb', 'html', 'mathtools', 'mhchem', 
-                    'newcommand', 'noerrors', 'noundefined', 
-                    'upgreek', 'unicode', 'verb', 'configmacros', 
-                    'tagformat', 'textcomp', 'textmacros', 
-                ]
-            }
+            tex: {},
+            output: 'svg',
         })
     ],
 

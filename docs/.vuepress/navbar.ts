@@ -28,6 +28,12 @@ export const navbar = defineNavbarConfig([
         items: [
             { icon: "carbon:function-math", text: "FFMP", link: "/series/FFMP/An-intro" },
         ],
+    },
+
+    {
+        icon: "carbon:link",
+        text: "友链",
+        link: "/friends"
     }
     
 ])

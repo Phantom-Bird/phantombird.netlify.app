@@ -7,6 +7,12 @@ title: 项目构建指南
 pnpm i
 ```
 
+## 更新
+```sh
+pnpm vp-update
+```
+记得查看更新日志，以防破坏性更新。
+
 ## 预览
 ```sh
 pnpm docs:dev
