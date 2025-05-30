@@ -12,7 +12,6 @@ createTime: 2022/01/07
 
 @tab Markdown
 ```md
-
 ## 1 数轴
 ### 1.1 两点间距离公式
 
@@ -108,14 +107,13 @@ $-1\le x<0$ 感觉自己被抛弃了……
 
 现在，把这题做完吧。用鼠标划下一行显示答案：  
 
-<span style="color: white">$x=-4或x=\frac{2}{5}$</p>
+<span style="color: white">$x=-4或x=\frac{2}{5}$</span>
 
 ### 2.2 绝对值的几何意义
 今天先不写了，明天再更吧，诶嘿  
 ```
 
 @tab RawHTML
-
 
 ```html
 <h1 id="数轴与动点知识手册"><a href="#数轴与动点知识手册" class="headerlink" title="数轴与动点知识手册"></a>数轴与动点知识手册</h1><h2 id="1-数轴"><a href="#1-数轴" class="headerlink" title="1 数轴"></a>1 数轴</h2><h3 id="1-1-两点间距离公式"><a href="#1-1-两点间距离公式" class="headerlink" title="1.1 两点间距离公式"></a>1.1 两点间距离公式</h3><blockquote>

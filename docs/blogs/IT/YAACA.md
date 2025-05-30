@@ -309,7 +309,7 @@ T(N)
 \end{aligned}
 $$
 
-取等条件是 $\rho(x)=\dfrac{1}{\sqrt{x\log x}}$，这预示着 $p_{i+1} = p_i + C\sqrt{p_i\log_2{p_i}}$.
+取等条件是 $\rho(x)=\dfrac{1}{\sqrt{x\log x}}$，这喻示着 $p_{i+1} = p_i + C\sqrt{p_i\log_2{p_i}}$.
 
 但是简单起见，我们仍然使用 $p_i = ki$，它的复杂度也是一样的。
 

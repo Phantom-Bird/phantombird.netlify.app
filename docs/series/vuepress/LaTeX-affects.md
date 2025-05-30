@@ -9,7 +9,7 @@ createTime: 2025/1/24
 
 $$
 \begin{gather*}
-{\color{#CF6}\Huge\bigcirc}\kern{-50px}
+{\color{#CF6}\Huge\bigcirc}\kern{-33px}
 \color{#9D3}
 \stackrel{\tiny\text{Adventure Rank}}{\Large 65}
 \\
@@ -23,7 +23,8 @@ $$
 $$
 
 :::tip
-在 KaTeX 中，`\kern` 的参数为 `33px`.
+- 在 KaTeX 中，`\kern` 的参数为 `-33px`.
+- 在 MathJax 中，`\kern` 的参数为 `-50px`.
 :::
 
 $$
@@ -53,20 +54,22 @@ $$
 $$
 \begin{array}{l|l}
 \hline
-\texttt{\\kern\{2em\}} & 1\kern{2em}2
+\texttt{\textbackslash kern\{2em\}} & 1\kern{2em}2
 \\\hline
-\texttt{\\kern\{-10px\}} & 1\kern{-10px}2
+\texttt{\textbackslash kern\{-10px\}} & 1\kern{-10px}2
 \\\hline
-\texttt{\\hphantom\{666\}} & \substack{\Large 1\hphantom{666}2 \\ \Large 16662}
+\texttt{\textbackslash hphantom\{666\}} & \substack{\normalsize 1\hphantom{666}2 \\ \normalsize 16662}
 \\\hline
 \end{array}
 $$
 
 $$
 \begin{array}{l|c}
-\texttt{\\stackrel\{1\}\{2\}} & \stackrel{1}{2}
+\texttt{\textbackslash stackrel\{1\}\{2\}} & \stackrel{1}{2}
 \\\hline
-\texttt{\\stackrel\{\\large\{1\}\}\{2\}} & \stackrel{\large{1}}{2}
+\texttt{\textbackslash stackrel\{\textbackslash large\{1\}\}\{2\}} & \stackrel{\large{1}}{2}
+\\\hline
+\texttt{\textbackslash substack\{1 \textbackslash \textbackslash 2}\} & \Large\substack{1 \\ 2}
 \end{array}
 $$
 
@@ -81,6 +84,8 @@ display style: $\displaystyle \sum_i\frac{1}{2}$
 ## 宏包
 
 !!我大费周章把 KaTeX 换成 MathJax 就是为了这个口牙！!!
+
+!!upd: 发现 KaTeX 有打开 mhchem 的设置，成小丑了!!
 
 ### 各种箭头
 
@@ -104,9 +109,9 @@ $$
 ```md
 $$
 \begin{gather*}
-\ce{Cu + SO4^2-(浓) + 4H+ ->[\Delta] Cu^2+ + SO2 ^ + 2H2O}
+\ce{Cu + SO4^2-(\text{浓}) + 4H+ ->[\Delta] Cu^2+ + SO2 ^ + 2H2O}
 \\
-\ce{C2H5OH + CH3COOH <=>[浓H2SO4][\Delta] CH3COOC2H5 + H2O}
+\ce{C2H5OH + CH3COOH <=>[\text{浓}H2SO4][\Delta] CH3COOC2H5 + H2O}
 \\
 \ce{<=>>} \quad \ce{<<=>}
 \\

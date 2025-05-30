@@ -60,6 +60,8 @@ Some Markdown here
 
 闲着没事干，把 KaTeX 换成了 MathJax.
 
+> upd 5/30: 发现 KaTeX 可以设置 `copy` 和 `mhchem`，还能基线对齐，换回去了。还好 KaTeX 基本兼容 MathJax.
+
 结果……
 
 ### 缓存坑

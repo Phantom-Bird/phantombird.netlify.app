@@ -20,9 +20,12 @@ export default defineUserConfig({
     plugins: [
         rubyContainer,
         markdownMathPlugin({
-            type: 'mathjax',
-            tex: {},
-            output: 'svg',
+            type: 'katex',
+            copy: true,
+            mhchem: true,
+            // mathjax settings
+            // tex: {},
+            // output: 'chtml',
         })
     ],
 
@@ -43,7 +46,7 @@ export default defineUserConfig({
             demo: true,
             codeTree: true,
             math: {
-                type: 'mathjax',
+                type: 'katex',
             }
         },
 
