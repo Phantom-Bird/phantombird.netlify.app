@@ -1,5 +1,5 @@
 pnpm docs:build
-copy netlify.toml docs/.vuepress/dist
+# copy netlify.toml docs/.vuepress/dist
 
 # type anything else means no
 $response = Read-Host "Push to github? (Y/n) Plz commit first."
