@@ -4,7 +4,7 @@ title: 友情链接
 list:
   -
     name: GooodPig
-    link: //gooodpig.github.io
+    link: //gooodpig.pages.dev
     avatar: /gooodpig.jpg
     desc: 是个人物
 ---

@@ -1,5 +1,5 @@
 [build]
-publish = "docs/.vuepress/dist"
+  publish = "docs/.vuepress/dist"
 
 [build.processing.html]
   pretty_urls = false
