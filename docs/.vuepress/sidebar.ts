@@ -4,6 +4,7 @@ const auto: {items: 'auto'} = {items: 'auto'};
 
 export const sidebar: SidebarMulti = {
     '/series/FFMP/': auto,
+    '/series/OS/': auto,
     '/series/MC/': [
         'MC-doc-head',
         'MC-doc',

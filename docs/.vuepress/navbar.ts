@@ -20,6 +20,7 @@ export const navbar = defineNavbarConfig([
         items: [
             { icon: "carbon:cube", text: "MC", link: "/series/MC/MC-doc" },
             { icon: "carbon:blog", text: "vuepress 指南", link: "/series/vuepress/markdown-guide" },
+            { icon: "carbon:screen", text: "DIY OS", link: "/series/OS/OS-00-pre" }
         ],
     },
     {
