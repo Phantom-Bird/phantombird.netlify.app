@@ -47,7 +47,8 @@ export default defineUserConfig({
             codeTree: true,
             math: {
                 type: 'katex',
-            }
+            },
+            pdf: true,
         },
 
         plugins: {
@@ -58,7 +59,7 @@ export default defineUserConfig({
             shiki: {
                 theme: 'one-light',
                 // 强烈建议预设代码块高亮语言，插件默认加载所有语言会产生不必要的时间开销
-                languages: ['cpp', 'py', 'md', 'html', 'sh', 'yaml', 'ts', 'toml'],
+                // languages: ['cpp', 'py', 'md', 'html', 'sh', 'yaml', 'ts', 'toml'],
             },
 
             /**

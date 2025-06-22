@@ -111,13 +111,9 @@ KERNEL_ENTRY LoadKernel(void *KernelBuffer) {
         PrintHex(addr);
         PutStr(L", pages=");
         PrintDec(num_pages);
+        PutStr(L" ... ");
 
-        if (IsPageAllocated(addr, num_pages)){
-            PutStr(L" ... Skipped.\r\n");
-        } else {
-            PutStr(L"\r\n");
-            AllocatePagesAt(addr, num_pages);
-        }
+        TryAllocPagesAt(addr, num_pages);
 
         BS->CopyMem(dest, src, ph->p_filesz);
 
@@ -139,25 +135,26 @@ KERNEL_ENTRY LoadKernel(void *KernelBuffer) {
 static EFI_PHYSICAL_ADDRESS AllocatedPages[MAX_ALLOCATED];
 static UINTN AllocatedCnt = 0;
 
-void* AllocatePagesAt(EFI_PHYSICAL_ADDRESS addr, UINTN num_pages){
-    EFI_STATUS status = BS->AllocatePages(AllocateAddress, EfiLoaderData, num_pages, &addr);
+void* AllocatePageAt(EFI_PHYSICAL_ADDRESS addr){
+    EFI_STATUS status = BS->AllocatePages(AllocateAddress, EfiLoaderData, 1, &addr);
     if (EFI_ERROR(status)){
-        Err(L"[ERROR] Page allocation failed!\r\n");
+        PutStr(L"[ERROR] Page allocation failed at\r\n");
+        PrintHex(addr);
+        Err(L"");
     }
 
-    for (int i=0; i<=num_pages; i++){
-        if (AllocatedCnt >= MAX_ALLOCATED){
-            Err(L"[ERROR] Allocated records overflow.\r\n");
-        }
-        AllocatedPages[AllocatedCnt] = addr + i * PageSize;
-        AllocatedCnt++;
+    if (AllocatedCnt >= MAX_ALLOCATED){
+        Err(L"[ERROR] Allocated records overflow.\r\n");
     }
+
+    AllocatedPages[AllocatedCnt] = addr;
+    AllocatedCnt++;
 
     return (void*) (UINTN) addr;
 }
 
-BOOLEAN IsPageAllocated(EFI_PHYSICAL_ADDRESS addr, UINTN num_pages){
-    EFI_PHYSICAL_ADDRESS range_end = addr + num_pages * PageSize;
+BOOLEAN IsPageAllocated(EFI_PHYSICAL_ADDRESS addr){
+    EFI_PHYSICAL_ADDRESS range_end = addr + PageSize;
 
     for (int i=0; i<AllocatedCnt; i++){
         EFI_PHYSICAL_ADDRESS base = AllocatedPages[i];
@@ -170,6 +167,25 @@ BOOLEAN IsPageAllocated(EFI_PHYSICAL_ADDRESS addr, UINTN num_pages){
 
     return FALSE;
 }
+
+void *TryAllocPagesAt(EFI_PHYSICAL_ADDRESS addr, UINTN num_pages){
+    UINTN skipped = 0;
+
+    for (int i=0; i<num_pages; i++){
+        if (IsPageAllocated(addr + i * PageSize)) {
+            skipped++;
+        } else {
+            AllocatePageAt(addr + i * PageSize);
+        }
+    }
+
+    PutStr(L"Skipped ");
+    PrintDec(skipped);
+    PutStr(L"\r\n");
+
+    return (void*) (UINTN) addr;
+}
+
 ```
 
 ## 测试

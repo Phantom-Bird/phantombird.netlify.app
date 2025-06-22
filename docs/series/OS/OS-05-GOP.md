@@ -16,6 +16,8 @@ createTime: 2025/6/8
 是用于管理显示输出的核心协议。相比于 VGA，它支持的分辨率和它的灵活性都更高。 {.inline}
 
 ```c title="src/shared/graphics/gop.c"
+// TODO: update newer code in blog
+
 #include "gop.h"
 
 #ifdef BOOTLOADER
@@ -136,3 +138,78 @@ efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 :::center
 ![](OS-05-GOP/output.png)
 :::
+
+## 番外：用 GOP 显示文字
+
+我们可以用 64 位整数保存一个 8×8 的图像，于是可以把一个 ASCII 字体看作 `uint64_t FONT[128]`.
+
+至于如何生成这个字体，见源代码的 **utils/fontdecoder/main.py**
+
+```c title="print.c"
+#include "print.h"
+#include "font.h"
+
+#define CHAR_WIDTH 8
+#define CHAR_HEIGHT 8
+#define PADDING 16
+#define LINE_SPACING 4
+
+int32_t w_scaling=1, h_scaling=1;
+int32_t w_scaled=8, h_scaled=8;
+
+#define LINE_HEIGHT (h_scaled + LINE_SPACING)
+
+void set_scaling(int32_t w, int32_t h){
+    w_scaling = w;
+    h_scaling = h;
+    w_scaled = CHAR_WIDTH * w;
+    h_scaled = CHAR_HEIGHT * h;
+}
+
+void putchar_at(char c, uint32_t x, uint32_t y, PIXEL fg, PIXEL bg) {
+    if (c > 127){
+        c = ' ';
+    }
+
+    uint64_t glyph = FONT[c];
+    for (uint32_t row = 0; row < CHAR_HEIGHT; row++) {
+        for (uint32_t col = 0; col < CHAR_WIDTH; col++) {
+            BOOLEAN b = (glyph >> (row * 8 + col)) & 1;
+            DrawRect(x+col*w_scaling, y+row*h_scaling,
+                     x+(col+1)*w_scaling-1, y+(row+1)*h_scaling-1,
+                     b? fg: bg);
+            // DrawPixel(x+col, y+row, b? fg: bg);
+        }
+    }
+}
+
+uint32_t cursor_x = PADDING, cursor_y = PADDING;
+PIXEL fg_color = {255, 255, 255, 255},
+      bg_color = {0};
+
+void putchar(char c) {
+        if (c == '\n') {
+        cursor_x = PADDING;
+        cursor_y += LINE_HEIGHT;
+        return;
+    }
+
+    putchar_at(c, cursor_x, cursor_y, fg_color, bg_color);
+    cursor_x += w_scaled;
+
+    if (cursor_y + LINE_HEIGHT > ScreenHeight - PADDING) {
+        cursor_x = PADDING;
+        cursor_y = PADDING;
+        // TODO: 实现屏幕滚动
+    } else if (cursor_x + w_scaled > ScreenWidth - PADDING) {
+        cursor_x = PADDING;
+        cursor_y += LINE_HEIGHT;
+    }
+}
+
+void print(char *s) {
+    for (int i=0; s[i]; i++){
+        putchar(s[i]);
+    }
+}
+```

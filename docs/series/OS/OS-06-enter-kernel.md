@@ -1,6 +1,6 @@
 ---
 title: 操作系统(6) - 进入内核
-createTime: 2025/6/8
+createTime: 2025/6/9
 ---
 
 > 本节的任务并不像以前一样可以直接从标题看出来，所以我们简要介绍一下。  
@@ -72,7 +72,7 @@ const UINTN
 AllocatePagesAt(KernelStackBase, KernelStackPages);
 ```
 
-:::tip
+::::tip
 我们可以通过输出之前获取的 `MemoryMap` 确定应该把栈放在哪里。
 
 ```c
@@ -87,20 +87,25 @@ for (int i=0; i < MapSize/DescSize-8; i++){
 }
 ```
 
-以下是栈附近的内存布局：
+:::details 内存布局（节选）
 
-| 起始地址     | 起始地址         | 页数 | 大小      | 类型编号 | 类型说明                  |
-| ----------- | -------------- | ---- | -------- | ------- | ------------------------ |
-| `0x800000`  | 8 MB           | 8    | 32 KB    | 10      | `EfiACPIReclaimMemory`   |
-| `0x808000`  | 8 MB + 32 KB   | 3    | 12 KB    | 7       | `EfiConventionalMemory`  |
-| `0x80B000`  | 8 MB + 44 KB   | 1    | 4 KB     | 10      | `EfiACPIReclaimMemory`   |
-| `0x810000`  | 8 MB + 64 KB   | 240  | 960 KB   | 10      | `EfiACPIReclaimMemory`   |
-| `0x900000`  | 9 MB           | 3712 | 3.625 MB | 4       | `EfiBootServicesData`    |
-| `0x1780000` | 23 MB + 512 KB | 128  | 512 KB   | 7       | `EfiConventionalMemory`  |
-| `0x1800000` | 24 MB          | 8    | 32 KB    | 2       | `EfiLoaderCode`（我们的栈）|
-| `0x1808000` | 24 MB + 32 KB  | 9069 | 36 MB    | 7       | `EfiConventionalMemory`  |
+| 起始地址     | 起始地址 (换算)   | 页数 | 大小      | 类型编号 | 类型说明                         |
+| ----------- | -------------- | ---- | -------- | ------- | ------------------------------- |
+| `0x0`       | 0 B            | 1    | 4 KB     | 3       | `EfiBootServicesCode`           |
+| `0x1000`    | 4 KB           | 159  | 546 KB   | 7       | `EfiConventionalMemory`         |
+| `0x100000`  | 1 MB           | 5    | 20 KB    | 2       | `EfiLoaderCode`<br/>（我们的内核）|
+| `0x105000`  | 1 MB + 20 KB   | 1787 | 6.98 MB  | 7       | `EfiConventionalMemory`         |
+| `0x800000`  | 8 MB           | 8    | 32 KB    | 10      | `EfiACPIReclaimMemory`          |
+| `0x808000`  | 8 MB + 32 KB   | 3    | 12 KB    | 7       | `EfiConventionalMemory`         |
+| `0x80B000`  | 8 MB + 44 KB   | 1    | 4 KB     | 10      | `EfiACPIReclaimMemory`          |
+| `0x810000`  | 8 MB + 64 KB   | 240  | 960 KB   | 10      | `EfiACPIReclaimMemory`          |
+| `0x900000`  | 9 MB           | 3712 | 3.625 MB | 4       | `EfiBootServicesData`           |
+| `0x1780000` | 23 MB + 512 KB | 128  | 512 KB   | 7       | `EfiConventionalMemory`         |
+| `0x1800000` | 24 MB          | 8    | 32 KB    | 2       | `EfiLoaderCode`<br/>（我们的栈）  |
+| `0x1808000` | 24 MB + 32 KB  | 9069 | ~35 MB   | 7       | `EfiConventionalMemory`         |
 
 :::
+::::
 
 ## 传递参数
 
