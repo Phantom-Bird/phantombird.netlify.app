@@ -1,6 +1,6 @@
 ---
 title: 中二病院选拔测试 解答
-crateTime: 2025/6/17
+createTime: 2025/6/17
 ---
 
 ## T1
