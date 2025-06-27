@@ -1,6 +1,10 @@
 ---
 title: 题解 - 我会看见，飞萤之火
 createTime: 2025/5/31
+categories:
+    - study
+tags:
+    - math
 ---
 
 显然代价 $c \ge 1$，下证这个下界能取到。

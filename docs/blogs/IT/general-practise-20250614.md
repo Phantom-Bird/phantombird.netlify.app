@@ -1,6 +1,10 @@
 ---
 title: 每周一水
 createTime: 2025/6/14
+categories:
+    - IT
+tags:
+    - OI
 ---
 
 ## [P2202 [USACO13JAN] Square Overlap S](https://www.luogu.com.cn/problem/P2202)

@@ -1,6 +1,10 @@
 ---
 title: Vuepress 更新记
 createTime: 2025/5/18
+categories:
+    - IT
+tags:
+    - vuepress
 ---
 
 ## Vuepress 更新

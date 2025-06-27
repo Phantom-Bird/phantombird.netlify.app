@@ -1,6 +1,10 @@
 ---
 title: 中二病院选拔测试 解答
 createTime: 2025/6/17
+categories:
+    - study
+tags:
+    - math
 ---
 
 ## T1

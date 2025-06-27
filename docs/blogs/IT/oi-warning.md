@@ -1,6 +1,10 @@
 ---
 title: 疯狂进食（持续更新）
 createTime: 2024/12/11
+categories:
+    - IT
+tags:
+    - OI
 ---
 
 在这里存点我的黑历史（（

@@ -1,6 +1,10 @@
 ---
 title: 水 0621
 createTime: 2025/6/21
+categories:
+    - IT
+tags:
+    - OI
 ---
 
 ## P11088

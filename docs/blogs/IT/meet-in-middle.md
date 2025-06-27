@@ -1,6 +1,10 @@
 ---
 title: Meet in the Middle
 createTime: 2025/6/21
+categories:
+    - IT
+tags:
+    - OI
 ---
 
 可以用来处理数据范围是爆搜范围的两倍以下的可拆分问题。

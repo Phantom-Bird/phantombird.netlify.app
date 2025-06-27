@@ -1,6 +1,10 @@
 ---
 title: 对 GooodPig 连续有趣集合的构造性证明
 createTime: 2025/5/26
+categories:
+    - study
+tags:
+    - math
 ---
 
 :::note 题意

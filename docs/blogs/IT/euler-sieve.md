@@ -1,6 +1,11 @@
 ---
 title: 线性筛
 createTime: 2025/6/26
+categories:
+    - IT
+tags:
+    - OI
+    - math
 ---
 
 今天晚自习被 GooodPig 和 Function 拉去解决他们关于 $\tau(n)$ 的猜想.

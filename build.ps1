@@ -1,3 +1,5 @@
+python frontmatter-checker.py
+
 # type anything else means no
 $response = Read-Host "Build? (Y/n)"
 if ($response -eq "Y" -or $response -eq "y" -or $response -eq ""){

@@ -1,6 +1,10 @@
 ---
 title: 题解：拾起砂糖的祭典（FFMP Ex5 20250313）
 createTime: 2025/3/13
+categories:
+    - study
+tags:
+    - math
 ---
 
 用被删去的顺序给集合中的每一个元素编号，以下简便起见，将用标号指代对应的元素。
