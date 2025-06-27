@@ -5,7 +5,8 @@ categories:
     - IT
 tags:
     - OI
-    - math
+    - OI-note
+    - maths
 ---
 
 今天晚自习被 GooodPig 和 Function 拉去解决他们关于 $\tau(n)$ 的猜想.

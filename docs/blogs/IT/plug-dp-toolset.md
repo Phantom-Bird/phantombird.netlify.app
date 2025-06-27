@@ -5,6 +5,7 @@ categories:
     - IT
 tags:
     - OI
+    - OI-note
 ---
 
 ## 定义

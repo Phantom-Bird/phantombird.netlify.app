@@ -4,7 +4,7 @@ createTime: 2025/5/26
 categories:
     - study
 tags:
-    - math
+    - maths
 ---
 
 :::note 题意

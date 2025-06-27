@@ -4,7 +4,7 @@ createTime: 2025/6/17
 categories:
     - study
 tags:
-    - math
+    - maths
 ---
 
 ## T1

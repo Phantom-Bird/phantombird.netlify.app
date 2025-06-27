@@ -1,6 +1,7 @@
 ---
 title: 写作的自我修养
 createTime: 2024/12/1
+#^ categories, tags
 ---
 
 洛谷题解被打回了，痛定思痛。

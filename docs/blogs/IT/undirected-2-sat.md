@@ -5,6 +5,7 @@ categories:
     - IT
 tags:
     - OI
+    - OI-note
 ---
 
 [有向 2-SAT 见此](2-SAT.md)

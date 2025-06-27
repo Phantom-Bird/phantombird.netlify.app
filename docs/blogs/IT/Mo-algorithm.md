@@ -1,6 +1,11 @@
 ---
 title: 莫队
 createTime: 2024/12/15
+categories:
+    - IT
+tags:
+    - OI
+    - OI-note
 ---
 
 ## 普通莫队

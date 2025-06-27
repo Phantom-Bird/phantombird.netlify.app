@@ -5,6 +5,7 @@ categories:
     - IT
 tags:
     - OI
+    - OI-note
 ---
 
 可以用来处理数据范围是爆搜范围的两倍以下的可拆分问题。

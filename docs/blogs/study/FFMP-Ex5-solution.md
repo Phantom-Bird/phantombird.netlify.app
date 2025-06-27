@@ -4,7 +4,7 @@ createTime: 2025/3/13
 categories:
     - study
 tags:
-    - math
+    - maths
 ---
 
 用被删去的顺序给集合中的每一个元素编号，以下简便起见，将用标号指代对应的元素。

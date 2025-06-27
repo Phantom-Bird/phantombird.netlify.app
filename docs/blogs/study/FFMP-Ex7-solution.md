@@ -4,7 +4,7 @@ createTime: 2025/5/31
 categories:
     - study
 tags:
-    - math
+    - maths
 ---
 
 显然代价 $c \ge 1$，下证这个下界能取到。

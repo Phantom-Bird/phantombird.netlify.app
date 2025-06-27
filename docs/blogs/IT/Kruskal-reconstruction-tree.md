@@ -5,6 +5,7 @@ tags:
  - OI
 categories:
  - IT
+ - OI-note
 ---
 
 ## 算法

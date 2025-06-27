@@ -2,6 +2,21 @@ import os
 import yaml
 import glob
 
+def get_ignore(frontmatter):
+    lines = frontmatter.splitlines()
+    for line in lines:
+        line = line.strip()
+        
+        if not line.startswith('#'):
+            continue
+        
+        line = line[1:].lstrip()
+        if not line.startswith('^'):
+            continue
+        
+        for i in line[1:].split(','):
+            yield i.strip()
+
 def check_frontmatter(directory, required_fields):
     md_files = glob.glob(os.path.join(directory, '**/*.md'), recursive=True)
     
@@ -23,9 +38,11 @@ def check_frontmatter(directory, required_fields):
                 print(f"文件 {md_file} 有空的 frontmatter 块")
                 continue
             
+            ignored_fields = list(get_ignore(frontmatter))
+            
             missing_fields = []
             for field in required_fields:
-                if field not in metadata:
+                if field not in metadata and field not in ignored_fields:
                     missing_fields.append(field)
             
             if missing_fields:
