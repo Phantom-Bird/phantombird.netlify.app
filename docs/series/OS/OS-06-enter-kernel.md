@@ -114,7 +114,7 @@ for (int i=0; i < MapSize/DescSize-8; i++){
 ```c title="src/shared/bootinfo.h"
 #include <stdint.h>
 
-#define MAGIC 0x46697265666c7900
+#define MAGIC 0x00796c6665726946
 
 typedef struct {
     uint32_t *framebuffer;
