@@ -1,5 +1,5 @@
-<!-- ---
-title: 操作系统(8) - 内存管理
+---
+title: 操作系统(A) - 加载页表
 createTime: 2025/6/9
 ---
 
@@ -23,7 +23,7 @@ createTime: 2025/6/9
 四级页表各有各的名字：PML4, PDP, PD, PT.
 :::
 
-## 方建页（分配页的方法
+## 分配页
 
 需要注意的是：并非所有的页都是可用的。因此，我们需要用两个数组管理页，分别存储一页是否
 
@@ -72,7 +72,7 @@ int test_bit(bit_array arr, size_t idx){
 
 初始化的代码：
 
-```c title="src/kernel/mmp_alloc.c"
+```c title="src/kernel/pmm_alloc.c"
 uint8_t page_bitmap[MAX_PAGE_COUNT / 8];  // 是否被占用（不可用或已分配）
 uint8_t page_available[MAX_PAGE_COUNT / 8];  // 是否可用
 size_t total_pages;
@@ -173,7 +173,7 @@ typedef PageTableEntry* PageTable;
 由于结构是相似的，我们可以用类似动态开点线段树的写法来写页表。  
 众所周知，`get_subnode` 是动态开点线段树的一个重要函数。因此，我们先实现它。
 
-```c title="src/kernel/pmm.c"
+```c title="src/kernel/paging.c"
 PageTable alloc_table(){
     PageTable page = pmm_alloc_page();
     if (!page) {
@@ -195,7 +195,7 @@ PageTable get_or_alloc_table_of(PageTableEntry* entry, uint64_t flags) {
 
 接下来，就可以实现修改页表的功能了。
 
-```c title="src/kernel /pmm.c"
+```c title="src/kernel /paging.c"
 static PageTable kernel_pml4;
 
 void map_page(uint64_t virt, uint64_t phys, uint64_t flags) {
@@ -214,8 +214,36 @@ void map_page(uint64_t virt, uint64_t phys, uint64_t flags) {
 
 ## 映射
 
-TODO
+我们把内核和帧缓冲区都映射到正确的地方。
+
+```c title="src/kernel/kernel.c"
+void init_paging(){
+    // 内核
+    map_pages(0, 32*MB, 0, PRESENT | WRITABLE);  // 恒等
+    map_pages(KERNEL_VIRT, 32*MB, 0, PRESENT | WRITABLE);  // 高地址
+
+    // 帧缓冲区
+    uint64_t fb_base = (uint64_t)(boot_info.graphics.framebuffer);
+    uint64_t fb_size = boot_info.graphics.size_bytes;  // BI 新增项目
+    map_pages(fb_base, fb_size, fb_base, PRESENT | WRITABLE);
+    map_pages(FB_VIRT, fb_size, fb_base, PRESENT | WRITABLE);
+}
+```
 
 ## 每日 Hello
 
-TODO -->
+```c
+print("[KERNEL] Initializing physical memory allocater...\n");
+pmm_init(boot_info.mem.mem_map,
+            boot_info.mem.count,
+            boot_info.mem.desc_size);
+
+print("[KERNEL] Initializing paging...\n");
+paging_set_root();
+init_paging();
+print("[KERNEL] Loading page table...\n");
+set_cr3();
+print("[KERNEL] Now kernel runs at 0xffff800000000000!\n");  // 其实还没有
+```
+
+![](OS-0A-paging/screenshot.png)

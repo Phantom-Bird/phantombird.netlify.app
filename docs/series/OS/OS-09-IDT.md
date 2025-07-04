@@ -1,14 +1,17 @@
 ---
-title: 操作系统(9) - 处理中断
+title: 操作系统(9) - LIDT
 createTime: 2025/6/29
 ---
 
 :::note 定义
 
-中断‌是计算机系统中一种由硬件或软件发出的信号，用于请求处理器暂停当前任务并处理特定事件。中断允许CPU在执行指令流时被紧急事件打断，从而实现异步事件响应、提高CPU利用率、协调硬件与软件交互‌。  
+中断‌是干啥的呢？CPU 在执行指令流的时候突然遇到了一些紧急事件，于是紧急打断当前指令的执行，进入中断处理程序响应这个事件。
+
 常用于：键盘输入响应‌‌、定时器触发、‌硬件异常处理、‌系统调用。
 
 :::
+
+这一节我们还是先把所有表填好，之后再来做有趣的工作。
 
 ## 加载 IDT
 
@@ -95,6 +98,26 @@ void init_idt() {
 }
 ```
 
+:::details 宏
+
+```cpp
+#define PUSH_ALL_REGISTERS \
+    "push %rax; push %rbx; push %rcx; push %rdx;" \
+    "push %rsi; push %rdi; push %rbp; push %r8;" \
+    "push %r9; push %r10; push %r11; push %r12;" \
+    "push %r13; push %r14; push %r15;"
+
+#define POP_ALL_REGISTERS \
+    "pop %r15; pop %r14; pop %r13; pop %r12;" \
+    "pop %r11; pop %r10; pop %r9; pop %r8;" \
+    "pop %rbp; pop %rdi; pop %rsi; pop %rdx;" \
+    "pop %rcx; pop %rbx; pop %rax;"
+```
+
+不知道为什么用 C 语言的语法高亮会忽略 `%`，但是 C++ 不会
+
+:::
+
 ## 测试
 
 ```c title="src/kernel/idt.c"
@@ -111,11 +134,11 @@ __asm__ volatile ("int $0x80");
 
 我们把所有的中断都集中到一个函数里面，方便处理。
 
-```c title="src/kernel/isr.c"
+```c title="src/kernel/isr_common.c"
 #include "print.h"
-#include "isr.h"
+#include "isr_common.h"
 
-void isr(int vec, void* const saved_registers){
+void isr_common(int vec, void* const saved_registers){
     print("[KERNEL] int ");
     print_hex(vec);
     print(", saved registers at ");
@@ -123,19 +146,19 @@ void isr(int vec, void* const saved_registers){
     putchar('\n');
 }
 
-#define ISR(vec)                                \
-    __attribute__((naked)) void isr##vec() {    \
+#define ISR_STUB(vec)                                \
+    __attribute__((naked)) void isr_stub_##vec() {    \
         __asm__ volatile (                      \
             PUSH_ALL_REGISTERS                  \  // 保存现场
             "mov $" #vec ", %rdi;"              \  // 第一个参数
             "mov %rsp, %rsi;"                   \  // 第二个参数
-            "call isr;"                         \
+            "call isr_common;"                         \
             POP_ALL_REGISTERS                   \  // 恢复现场
             "iretq;"                            \
         );                                      \
     }
 
-MACRO_FOR_256(ISR)
+MACRO_FOR_256(ISR_STUB)
 ```
 
 接下来，我们批量注册它们：
@@ -149,9 +172,9 @@ uint8_t get_dpl(int v){
     return (v >= 0x80)? 3: 0;
 }
 
-#define INIT_ISR(vec) set_idt_entry(vec, isr##vec, 0x08, get_type(vec), get_dpl(vec));
+#define INIT_ISR_STUB(vec) set_idt_entry(vec, isr_stub_##vec, 0x08 /*上一节的代码段选择子*/, get_type(vec), get_dpl(vec));
 void init_idt() {
-    MACRO_FOR_256(INIT_ISR)
+    MACRO_FOR_256(INIT_ISR_STUB)
     lidt(idt, sizeof(idt) - 1);
 }
 ```

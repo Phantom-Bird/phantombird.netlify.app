@@ -129,3 +129,13 @@ signed main() {
     return 0;
 }
 ```
+
+## 积性函数
+
+事实上，对于任何积性函数 $f$，如果可以在 $O(t(n))$ 的时间算出 $f(p^n)$，那么，可以在 $O(nt(n))$ 内筛出 $f(1), \dots, f(n)$.
+
+设 $p=\operatorname{mp}(n), n=p^k\times m, p \nmid m$，则
+
+$$
+f(n) = f(p^k) \times f(m).
+$$
