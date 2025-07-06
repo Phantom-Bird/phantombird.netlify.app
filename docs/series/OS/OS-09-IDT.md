@@ -144,6 +144,9 @@ void isr_common(int vec, void* const saved_registers){
     print(", saved registers at ");
     print_hex((uint64_t) saved_registers);
     putchar('\n');
+    if (vec < 32){  // 异常
+        raise_err("Exception!");
+    }
 }
 
 #define ISR_STUB(vec)                                \

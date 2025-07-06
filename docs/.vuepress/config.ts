@@ -30,8 +30,6 @@ export default defineUserConfig({
     ],
 
     theme: plumeTheme({
-        
-
         // 添加您的部署域名
         hostname: 'https://phantombird.netlify.app',
 
@@ -49,6 +47,7 @@ export default defineUserConfig({
                 type: 'katex',
             },
             pdf: true,
+            mermaid: true
         },
 
         plugins: {

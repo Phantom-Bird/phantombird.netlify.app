@@ -13,6 +13,8 @@ createTime: 2025/6/9
 - 中断
   - 异常处理（[第 B 章](OS-0B-exception-handle)）
   - 硬件中断
+    - 时钟（[第 C 章](OS-0C-timer)）
+    - 键盘（[第 D 章](OS-0D-keyboard)）
   - 系统调用
 - I/O
   - 文件系统
@@ -24,3 +26,4 @@ createTime: 2025/6/9
   - 切换上下文
   - 切换用户态
 - 进程与调度
+- 多核

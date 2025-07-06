@@ -60,7 +60,7 @@ typedef struct {
 
 ## 异常处理
 
-能够熟练地阅读英语文本的人应该都看得懂。
+熟练掌握英语阅读与代码阅读的人应该都看得懂。
 
 :::details 平平无奇的代码
 
@@ -84,6 +84,9 @@ void handle_exception_with_err_code(uint8_t vec, SavedRegistersWithError* const 
     print_hex(regs->rsp);
     print("\nERR: ");
     print_hex(regs->err_code);
+
+    if ()
+
     raise_err("");
 }
 
@@ -121,6 +124,4 @@ x = 1/x;  // [!code ++]
 ...
 ```
 
-检验异常处理。
-
-这一章比较水，主要是因为下一章内容比较多，实在是塞不下了。
+手动触发 Division by Zero，检验异常处理。

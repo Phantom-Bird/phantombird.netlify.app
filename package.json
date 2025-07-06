@@ -29,6 +29,7 @@
     "@vuepress/plugin-markdown-container": "2.0.0-rc.103",
     "@vuepress/plugin-register-components": "2.0.0-rc.103",
     "mathjax-full": "^3.2.2",
+    "mermaid": "^11.8.0",
     "netlify": "^13.3.5"
   }
 }
