@@ -1,8 +1,8 @@
 python frontmatter-checker.py
 
 # type anything else means no
-$response = Read-Host "Build? (Y/n)"
-if ($response -eq "Y" -or $response -eq "y" -or $response -eq ""){
+$response = Read-Host "Build? (y/N)"
+if ($response -eq "Y" -or $response -eq "y"){
     pnpm docs:build
     # copy netlify.toml docs/.vuepress/dist
 }

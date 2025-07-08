@@ -10,7 +10,8 @@ title: 一些 HTML 用法移植
 :::
 
 ::::demo markdown
-```md
+
+````md
 :::ruby 读作
 写作
 :::
@@ -19,8 +20,10 @@ title: 一些 HTML 用法移植
 
 :::ruby 读作 @rp ( @rp )
 写作
-```
 :::
+````
+
+::::
 
 其他 md 元素：
 
