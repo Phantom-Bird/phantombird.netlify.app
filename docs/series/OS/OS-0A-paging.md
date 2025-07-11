@@ -204,11 +204,11 @@ void map_page(uint64_t virt, uint64_t phys, uint64_t flags) {
     size_t pd_index   = PD_IDX(virt);
     size_t pt_index   = PT_IDX(virt);
 
-    uint64_t* pdpt = get_or_alloc_table_of(kernel_pml4+pml4_index, PRESENT | WRITABLE);
-    uint64_t* pd   = get_or_alloc_table_of(pdpt+pdpt_index, PRESENT | WRITABLE);
-    uint64_t* pt   = get_or_alloc_table_of(pd+pd_index, PRESENT | WRITABLE);
+    PageTable pdpt = get_or_alloc_table_of(kernel_pml4+pml4_index, PRESENT | WRITABLE);
+    PageTable pd   = get_or_alloc_table_of(pdpt+pdpt_index, PRESENT | WRITABLE);
+    PageTable pt   = get_or_alloc_table_of(pd+pd_index, PRESENT | WRITABLE);
 
-    pt[pt_index] = (phys & ~0xFFFULL) | flags | PRESENT;
+    pt[pt_index].value = (phys & ~0xFFFULL) | flags;
 }
 ```
 
@@ -247,3 +247,86 @@ print("[KERNEL] Now kernel runs at 0xffff800000000000!\n");  // 其实还没有
 ```
 
 ![](OS-0A-paging/screenshot.png)
+
+## 扩展：2MB 大页
+
+我们之前的页表高度是固定的，这就引发了一些问题。例如，我们发现：如果把一段连续的大内存映射到连续的虚拟地址，会浪费很多页表项。
+
+于是，我们可以启用大页，即让一个较浅的结点成为叶结点。
+
+一个大页可以映射 2MB 的内存。如此，映射 1GB 的内存在叶节点上只需要花 $\dfrac{1\text{GB}}{2\text{MB}} \times 8\text{B} = 4\text{KB}$，对于我们的系统来说足够了。
+
+要标记一个页表项是大页，只需把 `huge_page` 位置一即可。
+
+```c title="src/kernel/paging.c"
+// 2MB 大页
+void map_huge_page(uint64_t virt, uint64_t phys, uint64_t flags){
+    size_t pml4_index = PML4_IDX(virt);
+    size_t pdpt_index = PDPT_IDX(virt);
+    size_t pd_index   = PD_IDX(virt);
+
+    PageTable pdpt = get_or_alloc_table_of(kernel_pml4+pml4_index, PRESENT | WRITABLE);
+    PageTable pd   = get_or_alloc_table_of(pdpt+pdpt_index, PRESENT | WRITABLE);
+
+    pd[pd_index].value = (phys & ~(HUGE_PAGE_SIZE-1)) | flags | HUGE_PAGE;
+}
+
+void map_pages(uint64_t virt_start, size_t bytes, uint64_t phys_start, uint64_t flags){
+    virt_start &= ~(PAGE_SIZE-1);
+    uint64_t off = 0;
+
+    // 前散块
+    for (; ((virt_start + off) & (HUGE_PAGE_SIZE-1)) && off < bytes; off += PAGE_SIZE){
+        map_page(virt_start + off, phys_start + off, flags);
+    }
+
+    // 整块
+    for(; off + HUGE_PAGE_SIZE <= bytes; off += HUGE_PAGE_SIZE) {
+        map_huge_page(virt_start + off, phys_start + off, flags);
+    }
+    
+    // 后散块
+    for (; off < bytes; off += PAGE_SIZE){
+        map_page(virt_start + off, phys_start + off, flags);
+    }
+}
+```
+
+还有一个问题：如果用一个小页去覆写大页，那么大页的其余部分的映射会丢失。因此，类似线段树地，我们写一个 `push_down` 函数：
+
+```c title="src/kernel/paging.c"
+static inline void push_down(PageTableEntry *pd_entry) {
+    if (!pd_entry->hugepage) {
+        return;
+    }
+
+    uint64_t old_value = pd_entry->value;
+    pd_entry->value = 0; // 先清空条目
+    
+    uint64_t phys = old_value & ~(HUGE_PAGE_SIZE-1);
+    uint64_t flags = old_value & 0xFFF; // 保留所有标志位
+    flags &= ~HUGE_PAGE; // 确保清除大页标志
+    
+    PageTable pt = get_or_alloc_table_of(pd_entry, flags);
+
+    for (int i = 0; i < ENTRY_COUNT; i++) {
+        pt[i].value = (phys + i * PAGE_SIZE) | flags;
+    }
+}
+
+void map_page(uint64_t virt, uint64_t phys, uint64_t flags) {
+    // print("mapping ~~...\n");
+    size_t pml4_index = PML4_IDX(virt);
+    size_t pdpt_index = PDPT_IDX(virt);
+    size_t pd_index   = PD_IDX(virt);
+    size_t pt_index   = PT_IDX(virt);
+
+    PageTable pdpt = get_or_alloc_table_of(kernel_pml4+pml4_index, PRESENT | WRITABLE);
+    PageTable pd   = get_or_alloc_table_of(pdpt+pdpt_index, PRESENT | WRITABLE);
+
+    push_down(pd+pd_index);  // [!code ++]
+    PageTable pt   = get_or_alloc_table_of(pd+pd_index, PRESENT | WRITABLE);
+
+    pt[pt_index].value = (phys & ~0xFFFULL) | flags;
+}
+```

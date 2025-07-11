@@ -17,7 +17,15 @@ createTime: 2025/6/9
 ```c title="src/bootloader/exitboot.c"
 #include "exitboot.h"
 
-UINTN GetMapKey() {
+#define STMT_WRAP(stmt) do {stmt} while (FALSE)
+#define PTR_ASSIGN(ptr, val) STMT_WRAP(if (ptr) {*(ptr) = (val);})
+
+void GetMemMap(
+        EFI_MEMORY_DESCRIPTOR **outMemMap,
+        UINT64 *outMemMapCount,
+        UINT64 *outMemMapDescSize,
+        UINT64 *outMapKey
+) {
     EFI_STATUS status;
 
     UINTN MapSize = 0, MapKey, DescSize;
@@ -28,9 +36,11 @@ UINTN GetMapKey() {
         Err(L"[ERROR] GetMemoryMap (size query) failed.\r\n");
     }
 
-    MapSize += DescSize * 8;
+    MemMapCount = MapSize / DescSize;
+    MemMapDescSize = DescSize;
 
-    EFI_MEMORY_DESCRIPTOR *mem_map = (EFI_MEMORY_DESCRIPTOR*) Allocate(MapSize);
+    MapSize += DescSize * 8;
+    mem_map = (EFI_MEMORY_DESCRIPTOR*) Allocate(MapSize);
     if (!mem_map){
         Err(L"[ERROR] Failed to allocate memory map.\r\n");
     }
@@ -40,7 +50,10 @@ UINTN GetMapKey() {
         Err(L"[ERROR] GetMemoryMap (actual) failed.\r\n");
     }
 
-    return MapKey;
+    PTR_ASSIGN(outMemMap, mem_map);
+    PTR_ASSIGN(outMemMapCount, MemMapCount);
+    PTR_ASSIGN(outMemMapDescSize, DescSize);
+    PTR_ASSIGN(outMapKey, MapKey);
 }
 
 void ExitBootDevices(EFI_HANDLE ImageHandle, UINTN MapKey){

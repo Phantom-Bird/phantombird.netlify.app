@@ -213,7 +213,7 @@ efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 
     EFI_FILE_HANDLE Volume = GetVolume(ImageHandle);
     PutStr(L"[BOOT] Reading kernel...\r\n");
-    void *KernelBuffer = ReadFile(Volume, L"\\kernel.elf");
+    void *KernelBuffer = ReadFile(Volume, L"\\kernel.elf", NULL);
     PutStr(L"[BOOT] Loading kernel...\r\n");
     KERNEL_ENTRY KernelEntry = LoadKernel(KernelBuffer);
     PutStr(L"[BOOT] Loaded kernel.\r\n");

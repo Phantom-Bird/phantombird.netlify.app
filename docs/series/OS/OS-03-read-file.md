@@ -163,7 +163,7 @@ EFI_FILE_HANDLE GetVolume(EFI_HANDLE image) {
 Volume 有经典的 Open / Read / Close 抽象，处理起来容易多了。
 
 ```c
-void* ReadFile(EFI_FILE_HANDLE Volume, CHAR16 *Path) {
+void* ReadFile(EFI_FILE_HANDLE Volume, CHAR16 *Path, UINT64 outSize) {
     EFI_FILE_HANDLE FileHandle;
     uefi_call_wrapper(Volume->Open, 5, Volume, &FileHandle, Path, EFI_FILE_MODE_READ, 0);
 
@@ -172,6 +172,10 @@ void* ReadFile(EFI_FILE_HANDLE Volume, CHAR16 *Path) {
     uefi_call_wrapper(FileHandle->Read, 3, FileHandle, &ReadSize, Buffer);
 
     uefi_call_wrapper(FileHandle->Close, 1, FileHandle);
+
+    if (outSize){
+        *outSize = ReadSize;
+    }
 
     return Buffer;
 }
@@ -257,7 +261,7 @@ efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable){
     EFI_FILE_HANDLE Volume = GetVolume(ImageHandle);
     ST->ConOut->OutputString(ST->ConOut, L"Hello, Volume!\r\n");
 
-    CHAR8 *Buffer = ReadFile(Volume, L"\\hello.txt");
+    CHAR8 *Buffer = ReadFile(Volume, L"\\hello.txt", NULL);
     ST->ConOut->OutputString(ST->ConOut, L"Hello, File!\r\n");
 
     PrintChar8Line(Buffer);
