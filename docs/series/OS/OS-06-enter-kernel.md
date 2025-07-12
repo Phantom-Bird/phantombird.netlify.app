@@ -14,9 +14,7 @@ createTime: 2025/6/9
 
 调用 `ExitBootServices` 先要获取内存布局。它也是经典的调用两次：第一次查询大小，第二次获取布局。
 
-```c title="src/bootloader/exitboot.c"
-#include "exitboot.h"
-
+```c title="src/bootloader/memmap.c"
 #define STMT_WRAP(stmt) do {stmt} while (FALSE)
 #define PTR_ASSIGN(ptr, val) STMT_WRAP(if (ptr) {*(ptr) = (val);})
 
@@ -55,7 +53,9 @@ void GetMemMap(
     PTR_ASSIGN(outMemMapDescSize, DescSize);
     PTR_ASSIGN(outMapKey, MapKey);
 }
+```
 
+```c title="src/bootloader/exitboot.c"
 void ExitBootDevices(EFI_HANDLE ImageHandle, UINTN MapKey){
     EFI_STATUS status = BS->ExitBootServices(ImageHandle, MapKey);
     if (EFI_ERROR(status)){

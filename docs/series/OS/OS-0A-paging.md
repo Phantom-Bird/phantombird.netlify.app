@@ -73,6 +73,7 @@ int test_bit(bit_array arr, size_t idx){
 初始化的代码：
 
 ```c title="src/kernel/pmm_alloc.c"
+#define RESERVED_PAGES ((1<<20) / PAGE_SIZE)
 uint8_t page_bitmap[MAX_PAGE_COUNT / 8];  // 是否被占用（不可用或已分配）
 uint8_t page_available[MAX_PAGE_COUNT / 8];  // 是否可用
 size_t total_pages;
@@ -96,7 +97,7 @@ void pmm_init(const EFI_MEMORY_DESCRIPTOR *mem_map,
 
         for (size_t p=0; p < len; p++){
             if (start_page + p >= MAX_PAGE_COUNT){
-                return;
+                break;
             }
 
             clear_bit(page_bitmap, start_page + p);
@@ -104,6 +105,9 @@ void pmm_init(const EFI_MEMORY_DESCRIPTOR *mem_map,
             total_pages++;
         }
     }
+
+    memset(page_available, 0, RESERVED_PAGES / 8);
+    memset(page_bitmap, -1, RESERVED_PAGES / 8);
 }
 ```
 
