@@ -1,6 +1,6 @@
 ---
-title: 操作系统(F) - 跳转高址
-createTime: 2025/7/6
+title: 操作系统(10) - 跳转高址
+createTime: 2025/7/12
 ---
 
 请注意：这一章是重构章，因此主要以修改记录的方式来呈现。
@@ -11,7 +11,7 @@ createTime: 2025/7/6
 
 ## 分离虚拟地址与物理地址
 
-首先，我们之前内核的写法是虚拟地址、物理地址不分的。我们必须分离二者，才能适应高地址映射。
+首先，我们之前内核的写法是虚拟地址、物理地址不分的。我们必须区分二者，才能适应高地址映射。
 
 核心代码是一个转换函数：
 
@@ -85,6 +85,11 @@ void free_page(size_t addr){  // [!code --]
 void free_page(PhysicalAddress addr){  // [!code ++]
     ...
 }
+```
+
+```c title="src/kernel/kmalloc.c"
+void *addr = alloc_page();  // [!code --]
+void *addr = phys2virt(alloc_page());  // [!code ++]
 ```
 
 :::
