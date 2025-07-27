@@ -44,12 +44,7 @@ i & 1 & 2 & 3 & 4\\
 a & 1 & 1 & 4 & 5
 \end{array}
 \quad&
-%\ce{<=>[\footnotesize\texttt{t++; swap(R[t].x, a[R[t].p]);}][\footnotesize\texttt{swap(R[t].x, a[R[t].p]); t--;}]}
-\begin{array}{c}
-\texttt{t++; swap(R[t].x, a[R[t].p]);} \rightarrow\\
-\hline\hline
-\leftarrow\texttt{swap(R[t].x, a[R[t].p]); t--;}
-\end{array}
+\ce{<=>[\normalsize\texttt{t++; swap(R[t].x, a[R[t].p]);}][\normalsize\texttt{swap(R[t].x, a[R[t].p]); t--;}]}
 &\quad
 \begin{array}{c|cccc}
 i & 1 & 2 & 3 & 4\\

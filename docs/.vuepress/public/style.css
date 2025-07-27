@@ -18,7 +18,7 @@
 
 /*微调导航栏图标*/
 
-.vp-menu-link .vp-link .vp-icon {
+/* .vp-menu-link .vp-link .vp-icon {
     position: relative;
     top: 2px;
 }
@@ -31,7 +31,7 @@
 .navbar-menu-link .vp-icon {
     position: relative;
     top: 0.8px;
-}
+} */
 
 /*修复外链 bug*/
 /* span.vpi-external-link[data-v-ff82a999=""] {

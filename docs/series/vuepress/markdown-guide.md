@@ -38,8 +38,6 @@ tags:
 :::demo markdown
 ```md
 red {#pp .a .b style="color:red"}
-
-<!-- 在 demo 中必须空一行然后写点什么它才能工作。 -->
 ```
 :::
 
@@ -134,15 +132,15 @@ Ciallo
 
 ### Markdown 演示
 
-::::demo markdown
+Markdown 演示不能嵌套。
+
 ````md
-```md
 :::demo markdown
+```md
 demo `demo` $demo$
-:::
 ```
+:::
 ````
-::::
 
 ## 字体
 
@@ -151,6 +149,6 @@ demo `demo` $demo$
 ::::demo markdown
 ```md
 -> --> <==>  
-:) :(
+:) :( :P :D
 ```
 ::::
