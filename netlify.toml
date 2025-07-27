@@ -1,5 +1,6 @@
 [build]
   publish = "docs/.vuepress/dist"
+  command = "pnpm docs:build"
 
 [build.processing.html]
   pretty_urls = false

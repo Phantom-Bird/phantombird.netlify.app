@@ -39,6 +39,8 @@ export default defineUserConfig({
             pagination: 15,  // 每页显示的文章数量。禁用分页 - pagination: false,
             tagsTheme: 'brand',
         },
+
+        editLink: false,
         
         markdown: {
             demo: true,

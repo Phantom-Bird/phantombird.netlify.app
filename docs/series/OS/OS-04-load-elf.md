@@ -23,7 +23,7 @@ int kernel_entry(){
 
 :::code-tree title="改动" height="400px"
 
-```ld title="src/kernel /linker.ld"
+```linkerscript title="src/kernel /linker.ld"
 ENTRY(kernel_entry)
 
 SECTIONS {

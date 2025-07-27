@@ -516,7 +516,7 @@ typedef struct {
 
 经过了前面的准备工作，我们就可以很轻松地把内核挪到高地址了。只需改写链接器和加载代码即可。
 
-```ld title="src/kernel /linker.ld"
+```linkerscript title="src/kernel /linker.ld"
 ENTRY(kernel_entry)
 
 SECTIONS {
