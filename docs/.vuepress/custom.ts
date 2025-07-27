@@ -3,7 +3,7 @@ import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
 const rp_tag = '@rp'
 const default_arg = ['', '(', ')'];
 
-function get_args(s: string, i: number){
+function get_arg(s: string, i: number){
     var li = s.split(rp_tag);
     
     if (li[i] == undefined) {
@@ -17,7 +17,7 @@ export const rubyContainer = markdownContainerPlugin({
     before: (info: string): string => 
         `<ruby class="container-ruby">\n`,
     after: (info: string): string => 
-        `<rp>${get_args(info, 1)}</rp>
-        <rt>${get_args(info, 0)}</rt>
-        <rp>${get_args(info, 2)}</rp></ruby>\n`,
+        `<rp>${get_arg(info, 1)}</rp>
+        <rt>${get_arg(info, 0)}</rt>
+        <rp>${get_arg(info, 2)}</rp></ruby>\n`,
 })

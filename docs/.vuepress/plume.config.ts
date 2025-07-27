@@ -9,7 +9,7 @@ import { notes } from './notes'
 export default defineThemeConfig({
     logo: 'plume.svg',
     // your git repo url
-    docsRepo: 'https://gitee.com/phantombird/phantombird-site-src',
+    docsRepo: 'https://github.com/Phantom-Bird/phantombird.netlify.app',
     docsBranch: 'master',
     docsDir: 'docs',
 

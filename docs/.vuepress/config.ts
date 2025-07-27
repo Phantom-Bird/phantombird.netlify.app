@@ -40,7 +40,9 @@ export default defineUserConfig({
             tagsTheme: 'brand',
         },
 
-        editLink: false,
+        editLink: true,
+        editLinkPattern: ':repo/blob/:branch/:path?plain=1',
+        editLinkText: '在 GitHub 上查看源代码',
         
         markdown: {
             demo: true,

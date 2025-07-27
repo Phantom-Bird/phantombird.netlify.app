@@ -93,7 +93,7 @@ sr 1 2 2 2 3 4
 
 :::
 
-## 例2（特殊去重）：[P3067 [USACO12OPEN] Balanced Cow Subsets G](https://www.luogu.com.cn/problem/P3067?contestId=252170)
+## 例 2（特殊去重）：[P3067 [USACO12OPEN] Balanced Cow Subsets G](https://www.luogu.com.cn/problem/P3067?contestId=252170)
 
 要求 $(\sum A) = (\sum B)$，处理这种等式的常用手法是作差，$s = (\sum A) - (\sum B) = 0$.
 
