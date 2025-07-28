@@ -1,14 +1,17 @@
 import { viteBundler } from '@vuepress/bundler-vite'
 import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
-import { rubyContainer } from './custom'
-import {MarkdownItMathjaxOptions} from '@mdit/plugin-mathjax-slim'
+import { rubyContainer } from './custom/ruby'
 import {markdownMathPlugin} from '@vuepress/plugin-markdown-math'
 
 export default defineUserConfig({
+    // <魔改>
+
     head: [
         ['link', { rel: 'stylesheet', href: '/style.css' }]
     ],
+
+    // </魔改>
 
     base: '/',
     lang: 'zh-CN',
@@ -23,14 +26,10 @@ export default defineUserConfig({
             type: 'katex',
             copy: true,
             mhchem: true,
-            // mathjax settings
-            // tex: {},
-            // output: 'chtml',
         })
     ],
 
     theme: plumeTheme({
-        // 添加您的部署域名
         hostname: 'https://phantombird.netlify.app',
 
         blog: {
@@ -64,56 +63,6 @@ export default defineUserConfig({
                 // 强烈建议预设代码块高亮语言，插件默认加载所有语言会产生不必要的时间开销
                 // languages: ['cpp', 'py', 'md', 'html', 'sh', 'yaml', 'ts', 'toml'],
             },
-
-            /**
-             * markdown enhance
-             * @see https://theme-plume.vuejs.press/config/plugins/markdown-enhance/
-             */
-            // markdownEnhance: {
-            //     demo: true,
-            //   include: true,
-            //   chart: true,
-            //   echarts: true,
-            //   mermaid: true,
-            //   flowchart: true,
-            // },
-
-            /**
-             *  markdown power
-             * @see https://theme-plume.vuejs.press/config/plugin/markdown-power/
-             */
-            // markdownPower: {
-            //   pdf: true,
-            //   caniuse: true,
-            //   plot: true,
-            //   bilibili: true,
-            //   youtube: true,
-            //   icons: true,
-            //   codepen: true,
-            //   replit: true,
-            //   codeSandbox: true,
-            //   jsfiddle: true,
-            //   repl: {
-            //     go: true,
-            //     rust: true,
-            //     kotlin: true,
-            //   },
-            // },
-
-            /**
-             * 评论 comments
-             * @see https://theme-plume.vuejs.press/guide/features/comments/
-             */
-            // comment: {
-            //   provider: '', // "Artalk" | "Giscus" | "Twikoo" | "Waline"
-            //   comment: true,
-            //   repo: '',
-            //   repoId: '',
-            //   categoryId: '',
-            //   mapping: 'pathname',
-            //   reactionsEnabled: true,
-            //   inputPosition: 'top',
-            // },
         },
     }),
 })
