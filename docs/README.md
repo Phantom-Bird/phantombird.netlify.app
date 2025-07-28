@@ -7,8 +7,8 @@ config:
   -
     type: Desktop
     wallpapers:
-      - /firefly.jpg
-      - /firefly2.jpg
+      - "/firefly2.jpg"
+      - "/firefly.jpg"
     start:
       icon: "material-symbols:lists-rounded"
       text: "Phantom Bird"
