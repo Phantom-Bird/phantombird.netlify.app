@@ -18,12 +18,12 @@
           class="start-button button black-white"
           @click.stop="toggleMenu"
         >
-          <VPIcon name="material-symbols:lists-rounded" size="20" />
-          <span media-only-wide> {{ "Phantom Bird" }} </span>
+          <VPIcon :name="props.start.icon" size="20" />
+          <span class="media-only-wide"> {{ props.start.text }} </span>
         </span>        
 
         <!-- 使用 Plume 的搜索组件 -->
-        <VPNavBarSearch class="taskbar-search" />
+        <VPNavBarSearch v-if="props.searchBox" class="taskbar-search" />
       </div>
 
       <!-- 右侧区域 -->
@@ -39,10 +39,9 @@
           <VPIcon :name="action.icon" size="16" />
         </VPLink>
         
-        <VPSwitchAppearance/>
-        <!-- <VPNavScreenAppearance/> -->
+        <VPSwitchAppearance v-if="props.switchAppearance"/>
 
-        <div class="system-clock black-white">
+        <div v-if="props.timer" class="system-clock black-white">
           <VPIcon name="material-symbols:schedule" size="14" />
           <span>{{ currentTime }}</span>
         </div>
@@ -52,38 +51,43 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-import { usePageFrontmatter } from '@vuepress/client'
+import { ref, onMounted, onBeforeUnmount, defineProps, computed } from 'vue'
 import VPLink from "vuepress-theme-plume/components/VPLink.vue"
 import VPNavBarSearch from "vuepress-theme-plume/components/Nav/VPNavBarSearch.vue"
 import VPSwitchAppearance from "vuepress-theme-plume/components/VPSwitchAppearance.vue"
 import VPNavScreenMenu from "vuepress-theme-plume/components/Nav/VPNavScreenMenu.vue"
 import VPIcon from "vuepress-theme-plume/components/VPIcon.vue"
 
-const frontmatter = usePageFrontmatter()
+const props = defineProps<{
+  wallpapers: Array<string>,
+  start: {
+    icon: string,
+    text: string,
+  },
+  searchBox: boolean,
+  changeWallpaper?: boolean,
+  switchAppearance?: boolean,
+  timer?: boolean,
+}>()
+
 const showMenu = ref(false)
 const currentTime = ref(getTime())
-
-const wallpapers = [
-  '/firefly.jpg',
-  '/firefly2.jpg'
-]
-const currentWallpaper = ref(wallpapers[0])
+const currentWallpaper = ref(props.wallpapers[0])
 
 // 快速操作配置
-const quickActions = [
+const quickActions = props.changeWallpaper? [
   {
     icon: 'ion:image-outline',
     title: '更换壁纸',
     handler: changeWallpaper,
   },
-]
+]: []
 
 // 壁纸切换逻辑
 
 function changeWallpaper() {
-  const randomWallpaper = wallpapers[
-    Math.floor(Math.random() * wallpapers.length)
+  const randomWallpaper = props.wallpapers[
+    Math.floor(Math.random() * props.wallpapers.length)
   ]
   currentWallpaper.value = randomWallpaper
   console.log(`change wallpaper to ${currentWallpaper.value}`)
@@ -236,6 +240,7 @@ function closeMenu() {
   /* 移动端全屏 */
   @media (max-width: 768px) {
     position: fixed;
+    left: 0;
     width: 100vw;
     max-height: calc(100vh - var(--taskbar-height));
     border-radius: 0;
@@ -250,11 +255,19 @@ function closeMenu() {
   opacity: 0;
   transform-origin: 10% bottom;
   transition: all 0.3s ease;
+
+  @media (max-width: 768px) {
+    transform: scaleY(0);
+  }
 }
 
 .start-menu-container.active {
   transform: scale(1);
   opacity: 1;
+
+  @media (max-width: 768px) {
+    transform: scaleY(1);
+  }
 }
 
 .start-menu {

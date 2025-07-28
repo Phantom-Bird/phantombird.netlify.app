@@ -12,6 +12,7 @@ config:
     start:
       icon: "material-symbols:lists-rounded"
       text: "Phantom Bird"
+    searchBox: true
     changeWallpaper: true
     switchAppearance: true
     timer: true
