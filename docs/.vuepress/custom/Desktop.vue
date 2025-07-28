@@ -51,24 +51,26 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, onBeforeUnmount, defineProps, computed } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import VPLink from "vuepress-theme-plume/components/VPLink.vue"
 import VPNavBarSearch from "vuepress-theme-plume/components/Nav/VPNavBarSearch.vue"
 import VPSwitchAppearance from "vuepress-theme-plume/components/VPSwitchAppearance.vue"
 import VPNavScreenMenu from "vuepress-theme-plume/components/Nav/VPNavScreenMenu.vue"
 import VPIcon from "vuepress-theme-plume/components/VPIcon.vue"
 
-const props = defineProps<{
+type DeskTopProps = {
   wallpapers: Array<string>,
   start: {
     icon: string,
     text: string,
   },
   searchBox: boolean,
-  changeWallpaper?: boolean,
-  switchAppearance?: boolean,
-  timer?: boolean,
-}>()
+  changeWallpaper: boolean,
+  switchAppearance: boolean,
+  timer: boolean,
+};
+
+const props = defineProps<DeskTopProps>()
 
 const showMenu = ref(false)
 const currentTime = ref(getTime())
