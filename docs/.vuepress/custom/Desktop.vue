@@ -2,7 +2,9 @@
 
 <template>
   <div class="desktop">
-    <div class="wallpaper" :style="{ '--wallpaper-image': `url(${currentWallpaper})` }"/>
+    <div class="wallpaper" 
+         :style="{ '--wallpaper-image': `url(${currentWallpaper})` }"
+         @click="closeMenu"/>
 
     <div class="taskbar">
       <div class="start-menu-container" v-if="showMenu">
@@ -23,9 +25,10 @@
         <VPLink 
           class="start-button button black-white media-only-narrow"
           @click.stop="toggleMenu"
-          text="P"
           :no-icon="true"
-        />
+        >
+          <VPIcon name="material-symbols:lists-rounded" size="20" />
+        </VPLink>
 
         <!-- 使用 Plume 的搜索组件 -->
         <VPNavBarSearch class="taskbar-search" />
@@ -68,7 +71,6 @@ import VPIcon from "vuepress-theme-plume/components/VPIcon.vue"
 const frontmatter = usePageFrontmatter()
 const showMenu = ref(false)
 const currentTime = ref(getTime())
-const showIcons = ref(true)
 
 const wallpapers = [
   '/firefly.jpg',
@@ -96,7 +98,7 @@ function changeWallpaper() {
 }
 
 // 时钟逻辑
-let timer
+let timer: NodeJS.Timeout
 onMounted(() => {
   timer = setInterval(() => {
     currentTime.value = getTime()
@@ -108,7 +110,7 @@ onBeforeUnmount(() => {
 })
 
 function getTime() {
-  return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+  return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', day: 'numeric', month: 'numeric' })
 }
 
 function toggleMenu() {
@@ -119,22 +121,6 @@ function toggleMenu() {
 function closeMenu() {
   showMenu.value = false
 }
-
-// 点击其他地方关闭开始菜单
-const handleGlobalClick = (event) => {
-  if (
-    showMenu.value && !event.target.closest('.taskbar')
-  ) {
-    showMenu.value = false
-  }
-}
-
-onMounted(() => {
-  document.addEventListener('click', handleGlobalClick)
-})
-onBeforeUnmount(() => {
-  document.removeEventListener('click', handleGlobalClick)
-})
 </script>
 
 <style scoped>
@@ -183,7 +169,7 @@ onBeforeUnmount(() => {
 
 .taskbar {
   --taskbar-bg: var(--vp-c-bg-soft);
-  --taskbar-bg-hover: rgba(63, 63, 63, 0.15);
+  --taskbar-bg-hover: rgba(80, 80, 80, 0.15);
   
   position: fixed;
   bottom: 0;
