@@ -7,7 +7,7 @@
          @click="closeMenu"/>
 
     <div class="taskbar">
-      <div class="start-menu-container" v-if="showMenu">
+      <div v-bind:class="{ 'start-menu-container': true, 'active': showMenu }">
         <VPNavScreenMenu class="start-menu"/>
       </div>
       
@@ -106,7 +106,6 @@ function getTime() {
 }
 
 function toggleMenu() {
-  console.log('toggle')
   showMenu.value = !showMenu.value
 }
 
@@ -150,6 +149,11 @@ function closeMenu() {
 
 @media (hover: hover){
   /* 在支持悬停的设备上应用样式 */
+
+  .button {
+    transition: background 0.3s ease;
+  }
+
   .button:hover {
     background: var(--taskbar-bg-hover);
   }
@@ -176,6 +180,8 @@ function closeMenu() {
   align-items: center;
   padding: 0 12px;
   z-index: 100;
+
+  transition: background 0.3s ease;
 }
 
 .taskbar-left, .taskbar-right {
@@ -222,7 +228,7 @@ function closeMenu() {
   
   position: fixed;
   bottom: calc(var(--taskbar-height) + 4px);
-  left: 0;
+  left: 4px;
   border-radius: 8px;
 
   overflow: scroll;
@@ -236,6 +242,19 @@ function closeMenu() {
 
     bottom: var(--taskbar-height);
   }
+}
+
+/* 动画 */
+.start-menu-container {
+  transform: scale(0);
+  opacity: 0;
+  transform-origin: 10% bottom;
+  transition: all 0.3s ease;
+}
+
+.start-menu-container.active {
+  transform: scale(1);
+  opacity: 1;
 }
 
 .start-menu {
