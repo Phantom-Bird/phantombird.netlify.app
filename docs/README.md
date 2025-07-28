@@ -6,15 +6,13 @@ navbar: false
 config:
   -
     type: Desktop
-    full: true
-    banner: firefly.jpg
-    hero:
-      name: Phantom Bird
-      tagline: 你好！
-      text: ''
-      actions:
-        -
-          theme: brand
-          text: 博客
-          link: /blog/
+    wallpapers:
+      - /firefly.jpg
+      - /firefly2.jpg
+    start:
+      icon: "material-symbols:lists-rounded"
+      text: "Phantom Bird"
+    changeWallpaper: true
+    switchAppearance: true
+    timer: true
 ---

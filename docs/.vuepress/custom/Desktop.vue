@@ -14,21 +14,13 @@
       <!-- 左侧区域 -->
       <div class="taskbar-left">
         <!-- 开始菜单（宽） -->
-        <VPLink 
-          class="start-button button black-white media-only-wide"
+        <span
+          class="start-button button black-white"
           @click.stop="toggleMenu"
-          text="Phantom Bird"
-          :no-icon="true"
-        />
-
-        <!-- 开始菜单（窄） -->
-        <VPLink 
-          class="start-button button black-white media-only-narrow"
-          @click.stop="toggleMenu"
-          :no-icon="true"
         >
           <VPIcon name="material-symbols:lists-rounded" size="20" />
-        </VPLink>
+          <span media-only-wide> {{ "Phantom Bird" }} </span>
+        </span>        
 
         <!-- 使用 Plume 的搜索组件 -->
         <VPNavBarSearch class="taskbar-search" />
