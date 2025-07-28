@@ -1,9 +1,8 @@
 <!-- TODO: 弹出动画 -->
 
 <template>
-  <div class="desktop"
-       :style="{ '--wallpaper-image': `url(${currentWallpaper})` }"
-       >
+  <div class="desktop">
+    <div class="wallpaper" :style="{ '--wallpaper-image': `url(${currentWallpaper})` }"/>
 
     <div class="taskbar">
       <div class="start-menu-container" v-if="showMenu">
@@ -12,11 +11,19 @@
       
       <!-- 左侧区域 -->
       <div class="taskbar-left">
-        <!-- 使用 Plume 的 Link 组件 -->
+        <!-- 开始菜单（宽） -->
         <VPLink 
-          class="start-button button black-white"
+          class="start-button button black-white media-only-wide"
           @click.stop="toggleMenu"
-          :text="showMenu ? 'Phantom Bird' : 'Phantom Bird'"
+          text="Phantom Bird"
+          :no-icon="true"
+        />
+
+        <!-- 开始菜单（窄） -->
+        <VPLink 
+          class="start-button button black-white media-only-narrow"
+          @click.stop="toggleMenu"
+          text="P"
           :no-icon="true"
         />
 
@@ -132,12 +139,30 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .desktop {
+  --taskbar-height: 48px;
+}
+
+.media-only-narrow {
+  display: none !important;
+
+  @media (max-width: 768px) {
+    display: flex !important;
+  }
+}
+
+.media-only-wide {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+.wallpaper {
   /* 占满网页 */
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: var(--taskbar-height);
 
   background-image: var(--wallpaper-image);
   background-size: cover;
@@ -156,7 +181,6 @@ onBeforeUnmount(() => {
 }
 
 .taskbar {
-  --taskbar-height: 48px;
   --taskbar-bg: var(--vp-c-bg-soft);
   --taskbar-icon-hover: rgba(63, 63, 63, 0.15);
   
@@ -238,5 +262,25 @@ onBeforeUnmount(() => {
 .start-menu {
   position: relative;
   scale: 0.96;
+}
+
+/* 对 Chrome 浏览器 */
+*::-webkit-scrollbar {
+width: 4px;
+height: 4px;
+background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+background: transparent;
+border-radius: 4px;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+background: hsla(0, 0%, 53%, 0.4);
+}
+
+*:hover::-webkit-scrollbar-track {
+background: transparent;
 }
 </style>
