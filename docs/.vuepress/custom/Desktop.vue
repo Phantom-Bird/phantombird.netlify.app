@@ -170,9 +170,10 @@ onBeforeUnmount(() => {
   transition: background-image 0.5s ease; /* 添加过渡动画 */
 }
 
-.button {
-  &:hover {
-    background: var(--taskbar-icon-hover);
+@media (hover: hover){
+  /* 在支持悬停的设备上应用样式 */
+  .button:hover {
+    background: var(--taskbar-bg-hover);
   }
 }
 
@@ -182,7 +183,7 @@ onBeforeUnmount(() => {
 
 .taskbar {
   --taskbar-bg: var(--vp-c-bg-soft);
-  --taskbar-icon-hover: rgba(63, 63, 63, 0.15);
+  --taskbar-bg-hover: rgba(63, 63, 63, 0.15);
   
   position: fixed;
   bottom: 0;
