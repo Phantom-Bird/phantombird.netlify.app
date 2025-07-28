@@ -35,13 +35,15 @@ export default defineUserConfig({
         blog: {
             include: ['blogs/**/*.md'],
             exclude: ['.vuepress/', '**/README.md'],
-            pagination: 15,  // 每页显示的文章数量。禁用分页 - pagination: false,
+            pagination: 15,
             tagsTheme: 'brand',
         },
 
         editLink: true,
         editLinkPattern: ':repo/blob/:branch/:path?plain=1',
         editLinkText: '在 GitHub 上查看源代码',
+
+        footer: false,  // 似乎没有只在首页关闭的选项
         
         markdown: {
             demo: true,

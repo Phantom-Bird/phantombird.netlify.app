@@ -1,9 +1,11 @@
 ---
 pageLayout: home
 externalLinkIcon: false
+navbar: false
+
 config:
   -
-    type: banner
+    type: Desktop
     full: true
     banner: firefly.jpg
     hero:
