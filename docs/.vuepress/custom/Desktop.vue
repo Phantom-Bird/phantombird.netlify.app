@@ -7,7 +7,7 @@
          @click="closeMenu"/>
 
     <div class="taskbar">
-      <div v-bind:class="{ 'start-menu-container': true, 'active': showMenu }">
+      <div v-bind:class="{ 'start-menu-container': true, 'active': showMenu, 'inactive': !showMenu }">
         <VPNavScreenMenu class="start-menu"/>
       </div>
       
@@ -252,24 +252,12 @@ function closeMenu() {
 }
 
 /* 动画 */
-.start-menu-container {
-  transform: scale(0);
-  opacity: 0;
-  transform-origin: 10% bottom;
-  transition: all 0.3s ease;
-
-  @media (max-width: 768px) {
-    transform: scaleY(0);
-  }
+.start-menu-container.inactive {
+  max-height: 0;
 }
 
-.start-menu-container.active {
-  transform: scale(1);
-  opacity: 1;
-
-  @media (max-width: 768px) {
-    transform: scaleY(1);
-  }
+.start-menu-container {
+  transition: all 0.3s ease-in-out;
 }
 
 .start-menu {
