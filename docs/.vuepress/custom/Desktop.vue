@@ -1,5 +1,3 @@
-<!-- TODO: 弹出动画 -->
-
 <template>
   <div class="desktop">
     <div class="wallpaper" 
