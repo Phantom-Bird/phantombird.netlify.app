@@ -155,7 +155,7 @@ function closeMenu() {
   /* 在支持悬停的设备上应用样式 */
 
   .button {
-    transition: background 0.3s ease;
+    transition: background 0.25s;
   }
 
   .button:hover {
@@ -185,7 +185,7 @@ function closeMenu() {
   padding: 0 12px;
   z-index: 100;
 
-  transition: background 0.3s ease;
+  transition: background 0.25s;
 }
 
 .taskbar-left, .taskbar-right {
@@ -255,7 +255,7 @@ function closeMenu() {
 }
 
 .start-menu-container {
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out, background 0.25s;
 }
 
 .start-menu {
