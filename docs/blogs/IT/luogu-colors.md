@@ -1,6 +1,9 @@
 ---
 title: 【转载】洛谷颜色对照表
 createTime: 2025/8/6
+tags:
+    - OI
+#^ categories
 ---
 
 转载自 **[@123asdf123](https://www.cnblogs.com/123asdf123/p/18218662)**

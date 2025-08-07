@@ -1,6 +1,10 @@
 ---
 title: 直面心魔——NOIP 2024 回顾（其二）
 createTime: 2025/8/6
+categories:
+    - IT
+tags:
+    - OI
 ---
 
 今日贤贤找到了我的 NOIP 的代码。
