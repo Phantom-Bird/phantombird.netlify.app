@@ -7,9 +7,9 @@ tags:
     - OI
 ---
 
-[1](https://hfoj.net/contest/686a894f94662a9af6fafb27/problems) [2](https://hfoj.net/contest/686aac9a94662a9af6fb09ef/problems) [3](https://hfoj.net/contest/686aad2f94662a9af6fb0a21/problems)
+[1](https://hfoj.net/contest/686a894f94662a9af6fafb27/problems) [2](https://hfoj.net/contest/686aac9a94662a9af6fb09ef/problems) [3](https://hfoj.net/contest/686aad2f94662a9af6fb0a21/problems) [4](https://www.luogu.com.cn/problem/P8436)
 
-应进一步熟悉：[线段树](#带标记线段树)、[Tarjan](#缩点tarjan)、[Dijstra](#单源最短路dijkstra)
+应进一步熟悉：[线段树](#带标记线段树)、Tarjan（[1](#缩点tarjan), [2](#割点--点双连通分量), [3](#割边--边双连通分量)）、[Dijstra](#单源最短路dijkstra)
 
 ## 空白模板
 
